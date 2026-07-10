@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscador de Frases · EN/ES</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  :root{
+    --azul:#1F3864; --azul-med:#2E75B6; --oro:#C7A935;
+    --papel:#F5F6FA; --tinta:#1A2233; --gris:#6B7385; --linea:#DDE2EC;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--papel); color:var(--tinta);
+    font-family:"Segoe UI", Arial, Helvetica, sans-serif; font-size:15px;
+    min-height:100vh;
+  }
+  .serif{font-family:Georgia, "Times New Roman", serif;}
+
+  /* ---------- Encabezado ---------- */
+  header{
+    background:var(--azul); color:#fff; padding:26px 20px 22px;
+    border-bottom:4px solid var(--oro);
+  }
+  .head-inner{max-width:980px; margin:0 auto; display:flex; flex-wrap:wrap;
+    align-items:flex-end; justify-content:space-between; gap:16px;}
+  h1{font-family:Georgia, serif; font-weight:700; font-size:30px; line-height:1.1;}
+  h1 em{color:var(--oro); font-style:italic;}
+  .head-sub{font-size:12.5px; opacity:.75; margin-top:6px; letter-spacing:.4px;}
+  .head-actions{display:flex; flex-direction:column; align-items:flex-end; gap:6px;}
+  .btn-cargar{
+    background:var(--oro); color:var(--azul); border:none; cursor:pointer;
+    font-weight:700; font-size:14px; padding:11px 20px; border-radius:6px;
+    letter-spacing:.3px;
+  }
+  .btn-cargar:hover{filter:brightness(1.08);}
+  .btn-cargar:focus-visible, button:focus-visible, input:focus-visible{
+    outline:3px solid var(--oro); outline-offset:2px;
+  }
+  #estado-archivo{font-size:11.5px; opacity:.8; text-align:right; max-width:340px;}
+
+  main{max-width:980px; margin:0 auto; padding:26px 20px 70px;}
+
+  .paso-titulo{
+    font-size:11.5px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase;
+    color:var(--azul-med); margin:26px 0 10px; display:flex; align-items:center; gap:10px;
+  }
+  .paso-titulo::after{content:""; flex:1; height:1px; background:var(--linea);}
+
+  /* ---------- Paso 1: idioma ---------- */
+  .idiomas{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .idioma-card{
+    background:var(--card); border:2px solid var(--linea); border-radius:10px;
+    padding:20px 18px; cursor:pointer; text-align:left; transition:border-color .15s;
+  }
+  .idioma-card:hover{border-color:var(--azul-med);}
+  .idioma-card.activo{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro) inset;}
+  .idioma-card .tag{font-size:11px; letter-spacing:1.5px; font-weight:700; color:var(--oro);}
+  .idioma-card .nombre{font-family:Georgia, serif; font-size:21px; margin:4px 0 6px; color:var(--azul);}
+  .idioma-card .desc{font-size:12.5px; color:var(--gris); line-height:1.45;}
+
+  /* ---------- Paso 2: pestañas ---------- */
+  .chips{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    background:var(--card); border:1.5px solid var(--linea); color:var(--tinta);
+    border-radius:999px; padding:8px 16px; font-size:13.5px; cursor:pointer;
+  }
+  .chip:hover{border-color:var(--azul-med);}
+  .chip.activo{background:var(--azul-med); border-color:var(--azul-med); color:#fff; font-weight:600;}
+  .chip .cant{opacity:.65; font-size:11.5px; margin-left:4px;}
+
+  /* ---------- Paso 3: búsqueda ---------- */
+  .buscador{position:relative;}
+  #campo-busqueda{
+    width:100%; padding:15px 16px 15px 46px; font-size:16.5px; color:var(--tinta);
+    border:2px solid var(--azul); border-radius:10px; background:var(--card);
+    font-family:inherit;
+  }
+  #campo-busqueda::placeholder{color:#9AA3B5;}
+  .lupa{position:absolute; left:15px; top:50%; transform:translateY(-50%);
+    width:18px; height:18px; pointer-events:none;}
+  .sugerencias{
+    position:absolute; z-index:30; left:0; right:0; top:calc(100% + 4px);
+    background:var(--card); border:1.5px solid var(--linea); border-radius:10px;
+    box-shadow:0 10px 26px rgba(31,56,100,.16); max-height:330px; overflow-y:auto;
+    display:none;
+  }
+  .sugerencias.visible{display:block;}
+  .sug-item{padding:10px 14px; cursor:pointer; display:flex; flex-direction:column; gap:2px;
+    border-bottom:1px solid #EEF1F6;}
+  .sug-item:last-child{border-bottom:none;}
+  .sug-item.marcado, .sug-item:hover{background:#EFF4FB;}
+  .sug-item .principal{font-weight:600; color:var(--azul); font-size:14.5px;}
+  .sug-item .principal mark{background:#F3E9C4; color:inherit; border-radius:2px; padding:0 1px;}
+  .sug-item .secundario{font-size:12px; color:var(--gris);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .sug-vacio{padding:14px; font-size:13px; color:var(--gris);}
+
+  /* ---------- Resultados ---------- */
+  #contador{font-size:12.5px; color:var(--gris); margin:16px 0 10px;}
+  .resultado{
+    background:var(--card); border:1px solid var(--linea); border-left:5px solid var(--oro);
+    border-radius:10px; padding:18px 20px; margin-bottom:14px;
+    animation:aparecer .18s ease-out;
+  }
+  @keyframes aparecer{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .resultado{animation:none;} }
+  .res-cabeza{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;}
+  .res-termino{font-family:Georgia, serif; font-size:22px; color:var(--azul); font-weight:700;}
+  .res-numero{font-size:12px; color:var(--oro); font-weight:700;}
+  .res-equiv{margin-top:4px; font-size:15.5px; color:var(--tinta);}
+  .res-equiv b{color:var(--azul-med); font-weight:600;}
+  .res-ejemplos{
+    margin-top:12px; background:#F6F8FC; border-radius:8px; padding:12px 14px;
+    border:1px solid #E7ECF5;
+  }
+  .res-ejemplos .lin{display:flex; gap:10px; align-items:flex-start; font-size:14px; line-height:1.5;}
+  .res-ejemplos .lin + .lin{margin-top:7px;}
+  .res-ejemplos .idio{
+    flex:none; font-size:10px; font-weight:700; letter-spacing:1px; color:#fff;
+    background:var(--azul-med); border-radius:4px; padding:2px 6px; margin-top:2px;
+  }
+  .res-ejemplos .lin.es .idio{background:var(--oro); color:var(--azul);}
+  .res-meta{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; font-size:11.5px;}
+  .meta-chip{border:1px solid var(--linea); border-radius:999px; padding:3px 10px; color:var(--gris);}
+  .meta-chip.cat{border-color:var(--azul-med); color:var(--azul-med); font-weight:600;}
+
+  /* ---------- Avisos / vacíos ---------- */
+  .aviso{
+    background:#FBF6E3; border:1px solid #E4D9A8; border-radius:10px;
+    padding:16px 18px; font-size:13.5px; line-height:1.55; color:#5C5230;
+  }
+  .aviso b{color:var(--azul);}
+  .vacio-grande{
+    text-align:center; padding:60px 20px; color:var(--gris);
+  }
+  .vacio-grande .serif{font-size:22px; color:var(--azul); margin-bottom:8px;}
+  .oculto{display:none !important;}
+  #input-archivo{display:none;}
+
+  footer{max-width:980px; margin:0 auto; padding:0 20px 30px; font-size:11px; color:#9AA3B5;}
+
+  @media (max-width:640px){
+    .idiomas{grid-template-columns:1fr;}
+    .head-inner{align-items:flex-start;}
+    .head-actions{align-items:flex-start;}
+    #estado-archivo{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div>
+      <h1>Buscador de <em>Frases</em></h1>
+      <div class="head-sub">Diccionario personal EN · ES &nbsp;|&nbsp; se actualiza cargando tu Excel</div>
+    </div>
+    <div class="head-actions">
+      <button class="btn-cargar" id="btn-cargar">Cargar actualización</button>
+      <div id="estado-archivo">Sin archivo cargado todavía.</div>
+    </div>
+  </div>
+  <input type="file" id="input-archivo" accept=".xlsx,.xls">
+</header>
+
+<main>
+  <!-- Estado sin datos -->
+  <div id="pantalla-vacia" class="vacio-grande">
+    <div class="serif">Para empezar, cargá tu archivo Excel</div>
+    <p>Usá el botón <b>Cargar actualización</b> (arriba a la derecha) y elegí
+    "Frases_Ingles_Guia_y_Business_Ordenadas.xlsx".<br>
+    La app lee todas las pestañas y las columnas A a G de cada una.</p>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="oculto">
+
+    <div class="paso-titulo">1 · Elegí la versión</div>
+    <div class="idiomas">
+      <button class="idioma-card" id="card-es" onclick="elegirIdioma('es')">
+        <div class="tag">ES → EN</div>
+        <div class="nombre">Versión en español</div>
+        <div class="desc">Escribís una palabra de la columna <b>Traducción</b> y te muestra la <b>Frase</b> en inglés, con su ejemplo y la traducción del ejemplo.</div>
+      </button>
+      <button class="idioma-card" id="card-en" onclick="elegirIdioma('en')">
+        <div class="tag">EN → ES</div>
+        <div class="nombre">English version</div>
+        <div class="desc">Escribís una palabra de la columna <b>Frase</b> y te muestra la <b>Traducción</b> al español, con su ejemplo y la traducción del ejemplo.</div>
+      </button>
+    </div>
+
+    <div id="bloque-pestanas" class="oculto">
+      <div class="paso-titulo">2 · Elegí dónde buscar</div>
+      <div class="chips" id="chips-pestanas"></div>
+    </div>
+
+    <div id="bloque-busqueda" class="oculto">
+      <div class="paso-titulo">3 · Buscá tu frase</div>
+      <div class="buscador">
+        <svg class="lupa" viewBox="0 0 24 24" fill="none" stroke="#1F3864" stroke-width="2.4">
+          <circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+        <input id="campo-busqueda" type="text" autocomplete="off" placeholder="">
+        <div class="sugerencias" id="lista-sugerencias" role="listbox"></div>
+      </div>
+      <div id="contador"></div>
+      <div id="resultados"></div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  Los datos quedan guardados en este navegador (memoria local). Si abrís el archivo en otra computadora u otro navegador, volvé a cargar el Excel. La primera carga de la página necesita conexión a internet para leer archivos Excel.
+</footer>
+
+<script>
+"use strict";
+
+/* ================= Estado ================= */
+const CLAVE = "buscador_frases_datos_v1";
+let datos = null;          // {archivo, fecha, hojas:[{nombre, filas:[{num,frase,trad,ejEn,ejEs,episodio,categoria}]}]}
+let idioma = null;         // 'es' | 'en'
+let hojasElegidas = new Set(); // nombres; vacío + flagTodas
+let todasLasHojas = true;
+let indiceMarcado = -1;    // navegación con teclado en sugerencias
+let sugerenciasActuales = [];
+
+/* ================= Utilidades ================= */
+function norm(s){
+  return (s == null ? "" : String(s))
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+function esc(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+/* ================= Persistencia (con manejo de errores) ================= */
+function guardar(){
+  try{ localStorage.setItem(CLAVE, JSON.stringify(datos)); return true; }
+  catch(e){ return false; }
+}
+function recuperar(){
+  try{
+    const crudo = localStorage.getItem(CLAVE);
+    if(!crudo) return null;
+    return JSON.parse(crudo);
+  }catch(e){ return null; }
+}
+
+/* ================= Lectura del Excel ================= */
+/* Busca la fila de encabezados (contiene "frase" y "traduccion") en las
+   primeras 10 filas. Mapea columnas por nombre; si no encuentra encabezados,
+   usa el orden fijo: A=#, B=Traducción, C=Frase, D=Ej EN, E=Ej ES, F=Episodio, G=Categoría. */
+function parsearLibro(wb){
+  const hojas = [];
+  wb.SheetNames.forEach(nombre => {
+    const ws = wb.Sheets[nombre];
+    const matriz = XLSX.utils.sheet_to_json(ws, {header:1, defval:"", blankrows:false});
+    if(!matriz.length) return;
+
+    let filaEnc = -1, mapa = null;
+    for(let i = 0; i < Math.min(10, matriz.length); i++){
+      const fila = matriz[i].map(norm);
+      const iFrase = fila.findIndex(v => v === "frase");
+      const iTrad  = fila.findIndex(v => v.startsWith("traduccion"));
+      if(iFrase >= 0 && iTrad >= 0){
+        filaEnc = i;
+        const busca = (pred) => matriz[i].findIndex(v => pred(norm(v)));
+        mapa = {
+          num:  busca(v => v === "#" || v.startsWith("num")),
+          trad: iTrad,
+          frase:iFrase,
+          ejEn: busca(v => v.includes("ejemplo") && v.includes("en")),
+          ejEs: busca(v => v.includes("ejemplo") && v.includes("es")),
+          episodio: busca(v => v.startsWith("episodio")),
+          categoria: busca(v => v.startsWith("categoria"))
+        };
+        break;
+      }
+    }
+    if(!mapa){
+      // Sin encabezados detectables: orden fijo A-G según el archivo de Chris
+      mapa = {num:0, trad:1, frase:2, ejEn:3, ejEs:4, episodio:5, categoria:6};
+      filaEnc = -1;
+    }
+
+    const filas = [];
+    for(let i = filaEnc + 1; i < matriz.length; i++){
+      const f = matriz[i];
+      const val = idx => (idx >= 0 && idx < f.length) ? String(f[idx]).trim() : "";
+      const frase = val(mapa.frase), trad = val(mapa.trad);
+      if(!frase && !trad) continue;               // fila vacía
+      if(norm(frase) === "frase") continue;       // encabezado repetido
+      filas.push({
+        num: val(mapa.num),
+        trad: trad,
+        frase: frase,
+        ejEn: val(mapa.ejEn),
+        ejEs: val(mapa.ejEs),
+        episodio: val(mapa.episodio),
+        categoria: val(mapa.categoria)
+      });
+    }
+    if(filas.length) hojas.push({nombre, filas});
+  });
+  return hojas;
+}
+
+/* ================= Carga de archivo ================= */
+document.getElementById("btn-cargar").addEventListener("click", () => {
+  document.getElementById("input-archivo").click();
+});
+document.getElementById("input-archivo").addEventListener("change", (ev) => {
+  const archivo = ev.target.files[0];
+  if(!archivo) return;
+  const lector = new FileReader();
+  lector.onload = (e) => {
+    let hojas;
+    try{
+      const wb = XLSX.read(new Uint8Array(e.target.result), {type:"array"});
+      hojas = parsearLibro(wb);
+    }catch(err){
+      alert("No se pudo leer el archivo. Verificá que sea un Excel válido (.xlsx).");
+      return;
+    }
+    if(!hojas.length){
+      alert("No se encontraron frases. Revisá que cada pestaña tenga las columnas Traducción y Frase.");
+      return;
+    }
+    datos = {
+      archivo: archivo.name,
+      fecha: new Date().toLocaleString("es-AR", {dateStyle:"short", timeStyle:"short"}),
+      hojas
+    };
+    const guardado = guardar();
+    todasLasHojas = true; hojasElegidas = new Set();
+    iniciarApp();
+    if(!guardado){
+      document.getElementById("estado-archivo").innerHTML +=
+        "<br><b>Aviso:</b> este entorno no permite guardar la memoria local; al cerrar, habrá que volver a cargar el Excel.";
+    }
+  };
+  lector.readAsArrayBuffer(archivo);
+  ev.target.value = "";
+});
+
+/* ================= Interfaz ================= */
+function iniciarApp(){
+  const total = datos.hojas.reduce((a,h) => a + h.filas.length, 0);
+  document.getElementById("estado-archivo").innerHTML =
+    "Última actualización: <b>" + esc(datos.archivo) + "</b><br>" +
+    esc(datos.fecha) + " · " + datos.hojas.length + " pestañas · " + total + " frases";
+  document.getElementById("pantalla-vacia").classList.add("oculto");
+  document.getElementById("app").classList.remove("oculto");
+  dibujarChips();
+  if(idioma) elegirIdioma(idioma); else limpiarResultados();
+}
+
+function elegirIdioma(cual){
+  idioma = cual;
+  document.getElementById("card-es").classList.toggle("activo", cual === "es");
+  document.getElementById("card-en").classList.toggle("activo", cual === "en");
+  document.getElementById("bloque-pestanas").classList.remove("oculto");
+  document.getElementById("bloque-busqueda").classList.remove("oculto");
+  const campo = document.getElementById("campo-busqueda");
+  campo.placeholder = cual === "es"
+    ? "Escribí en español (columna Traducción)... ej: aguafiestas"
+    : "Type in English (column Frase)... e.g. deadline";
+  campo.value = "";
+  limpiarResultados();
+  campo.focus();
+}
+
+function dibujarChips(){
+  const cont = document.getElementById("chips-pestanas");
+  cont.innerHTML = "";
+  const chipTodas = document.createElement("button");
+  chipTodas.className = "chip" + (todasLasHojas ? " activo" : "");
+  chipTodas.textContent = "Todas las pestañas";
+  chipTodas.onclick = () => { todasLasHojas = true; hojasElegidas = new Set(); dibujarChips(); relanzar(); };
+  cont.appendChild(chipTodas);
+
+  datos.hojas.forEach(h => {
+    const b = document.createElement("button");
+    const activa = !todasLasHojas && hojasElegidas.has(h.nombre);
+    b.className = "chip" + (activa ? " activo" : "");
+    b.innerHTML = esc(h.nombre) + '<span class="cant">(' + h.filas.length + ')</span>';
+    b.onclick = () => {
+      if(todasLasHojas){ todasLasHojas = false; hojasElegidas = new Set([h.nombre]); }
+      else if(hojasElegidas.has(h.nombre)){
+        hojasElegidas.delete(h.nombre);
+        if(!hojasElegidas.size) todasLasHojas = true;
+      } else hojasElegidas.add(h.nombre);
+      dibujarChips(); relanzar();
+    };
+    cont.appendChild(b);
+  });
+}
+
+function hojasActivas(){
+  return datos.hojas.filter(h => todasLasHojas || hojasElegidas.has(h.nombre));
+}
+
+/* ================= Búsqueda y autocompletado ================= */
+function buscarCoincidencias(texto){
+  const q = norm(texto);
+  if(!q) return [];
+  const res = [];
+  hojasActivas().forEach(h => {
+    h.filas.forEach(f => {
+      const campo = idioma === "es" ? f.trad : f.frase;
+      if(norm(campo).includes(q)) res.push({fila:f, hoja:h.nombre});
+    });
+  });
+  // Primero los que coinciden desde el inicio de una palabra
+  res.sort((a,b) => {
+    const ca = norm(idioma === "es" ? a.fila.trad : a.fila.frase);
+    const cb = norm(idioma === "es" ? b.fila.trad : b.fila.frase);
+    const ia = (" " + ca).includes(" " + q) ? 0 : 1;
+    const ib = (" " + cb).includes(" " + q) ? 0 : 1;
+    return ia - ib || ca.localeCompare(cb);
+  });
+  return res;
+}
+
+const campoBusqueda = document.getElementById("campo-busqueda");
+const listaSug = document.getElementById("lista-sugerencias");
+
+campoBusqueda.addEventListener("input", () => {
+  const q = campoBusqueda.value.trim();
+  indiceMarcado = -1;
+  if(q.length < 2){ cerrarSugerencias(); limpiarResultados(); return; }
+  sugerenciasActuales = buscarCoincidencias(q).slice(0, 12);
+  dibujarSugerencias(q);
+});
+
+campoBusqueda.addEventListener("keydown", (e) => {
+  const abiertas = listaSug.classList.contains("visible");
+  if(e.key === "ArrowDown" && abiertas){
+    e.preventDefault();
+    indiceMarcado = Math.min(indiceMarcado + 1, sugerenciasActuales.length - 1);
+    marcarSugerencia();
+  } else if(e.key === "ArrowUp" && abiertas){
+    e.preventDefault();
+    indiceMarcado = Math.max(indiceMarcado - 1, 0);
+    marcarSugerencia();
+  } else if(e.key === "Enter"){
+    e.preventDefault();
+    if(abiertas && indiceMarcado >= 0){
+      elegirSugerencia(sugerenciasActuales[indiceMarcado]);
+    } else {
+      cerrarSugerencias();
+      mostrarResultados(buscarCoincidencias(campoBusqueda.value.trim()));
+    }
+  } else if(e.key === "Escape"){
+    cerrarSugerencias();
+  }
+});
+document.addEventListener("click", (e) => {
+  if(!e.target.closest(".buscador")) cerrarSugerencias();
+});
+
+function dibujarSugerencias(q){
+  listaSug.innerHTML = "";
+  if(!sugerenciasActuales.length){
+    listaSug.innerHTML = '<div class="sug-vacio">Sin coincidencias en las pestañas elegidas. Probá con otra palabra o con "Todas las pestañas".</div>';
+    listaSug.classList.add("visible");
+    return;
+  }
+  const qn = norm(q);
+  sugerenciasActuales.forEach((s, i) => {
+    const principal = idioma === "es" ? s.fila.trad : s.fila.frase;
+    const secundario = idioma === "es" ? s.fila.frase : s.fila.trad;
+    const div = document.createElement("div");
+    div.className = "sug-item";
+    div.setAttribute("role", "option");
+    div.innerHTML =
+      '<span class="principal">' + resaltar(principal, qn) + '</span>' +
+      '<span class="secundario">' + esc(secundario) + ' · ' + esc(s.hoja) + '</span>';
+    div.addEventListener("mousedown", (e) => { e.preventDefault(); elegirSugerencia(s); });
+    listaSug.appendChild(div);
+  });
+  listaSug.classList.add("visible");
+}
+
+function resaltar(texto, qn){
+  // Ubica la coincidencia sobre el texto normalizado y la marca en el original
+  const tn = norm(texto);
+  const pos = tn.indexOf(qn);
+  if(pos < 0) return esc(texto);
+  return esc(texto.slice(0, pos)) + "<mark>" + esc(texto.slice(pos, pos + qn.length)) + "</mark>" + esc(texto.slice(pos + qn.length));
+}
+
+function marcarSugerencia(){
+  [...listaSug.querySelectorAll(".sug-item")].forEach((el, i) => {
+    el.classList.toggle("marcado", i === indiceMarcado);
+    if(i === indiceMarcado) el.scrollIntoView({block:"nearest"});
+  });
+}
+
+function elegirSugerencia(s){
+  campoBusqueda.value = idioma === "es" ? s.fila.trad : s.fila.frase;
+  cerrarSugerencias();
+  mostrarResultados([s]);
+}
+
+function cerrarSugerencias(){
+  listaSug.classList.remove("visible");
+  indiceMarcado = -1;
+}
+
+function relanzar(){
+  const q = campoBusqueda.value.trim();
+  if(q.length >= 2) mostrarResultados(buscarCoincidencias(q));
+  else limpiarResultados();
+}
+
+/* ================= Resultados ================= */
+function limpiarResultados(){
+  document.getElementById("resultados").innerHTML = "";
+  document.getElementById("contador").textContent = "";
+}
+
+function mostrarResultados(lista){
+  const cont = document.getElementById("resultados");
+  const contador = document.getElementById("contador");
+  cont.innerHTML = "";
+  if(!lista.length){
+    contador.textContent = "";
+    cont.innerHTML = '<div class="aviso">No se encontró ninguna coincidencia con lo que escribiste, en las pestañas elegidas. No hay resultados aproximados para mostrar: probá con otra palabra, revisá la ortografía o ampliá la búsqueda a "Todas las pestañas".</div>';
+    return;
+  }
+  contador.textContent = lista.length === 1 ? "1 resultado" : lista.length + " resultados";
+  lista.forEach(s => {
+    const f = s.fila;
+    const termino = idioma === "es" ? f.frase : f.trad;   // lo que quería obtener
+    const origen  = idioma === "es" ? f.trad  : f.frase;  // lo que buscó
+    const rotulo  = idioma === "es" ? "Traducción" : "Frase";
+    const card = document.createElement("div");
+    card.className = "resultado";
+    let html =
+      '<div class="res-cabeza">' +
+        '<span class="res-termino">' + esc(termino || "—") + '</span>' +
+        (f.num ? '<span class="res-numero">#' + esc(f.num) + '</span>' : '') +
+      '</div>' +
+      '<div class="res-equiv"><b>' + rotulo + ':</b> ' + esc(origen || "—") + '</div>';
+    if(f.ejEn || f.ejEs){
+      html += '<div class="res-ejemplos">';
+      if(f.ejEn) html += '<div class="lin en"><span class="idio">EN</span><span>' + esc(f.ejEn) + '</span></div>';
+      if(f.ejEs) html += '<div class="lin es"><span class="idio">ES</span><span>' + esc(f.ejEs) + '</span></div>';
+      html += '</div>';
+    }
+    html += '<div class="res-meta">';
+    if(f.categoria) html += '<span class="meta-chip cat">' + esc(f.categoria) + '</span>';
+    html += '<span class="meta-chip">Pestaña: ' + esc(s.hoja) + '</span>';
+    if(f.episodio) html += '<span class="meta-chip">Episodio ' + esc(f.episodio) + '</span>';
+    html += '</div>';
+    card.innerHTML = html;
+    cont.appendChild(card);
+  });
+}
+
+/* ================= Arranque ================= */
+(function(){
+  const previos = recuperar();
+  if(previos && previos.hojas && previos.hojas.length){
+    datos = previos;
+    iniciarApp();
+  }
+})();
+</script>
+</body>
+</html>
