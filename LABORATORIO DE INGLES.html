@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fluent Lab — American English B1 → C2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14202A; --bg:#EEF1F0; --card:#FFFFFF; --card-2:#F6F8F7;
+    --teal:#0E7C7B; --teal-d:#0a5f5e; --teal-soft:#e3f0ef;
+    --amber:#E0A458; --leaf:#1F9D6B; --coral:#E05A4E;
+    --line:#DCE3E1; --mute:#5C6B72; --ink-soft:#33454f;
+    --shadow:0 1px 2px rgba(20,32,42,.05), 0 8px 24px rgba(20,32,42,.06);
+    --r:16px; --r-sm:11px;
+    --en:#0a4f4e;
+  }
+  [data-theme="dark"]{
+    --ink:#E8EEEC; --bg:#0E1A1C; --card:#16262A; --card-2:#1c2f33;
+    --teal:#34b0a6; --teal-d:#2a8e86; --teal-soft:#11302f;
+    --amber:#E6B06a; --leaf:#46c08c; --coral:#ef7a6f;
+    --line:#26393d; --mute:#9fb2af; --ink-soft:#c6d4d1;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    --en:#7fded4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif; font-size:16px; line-height:1.55;
+    -webkit-font-smoothing:antialiased; padding-bottom:84px;
+    transition:background .3s,color .3s;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:18px 16px 8px;}
+  h1,h2,h3,.disp{font-family:"Space Grotesk",sans-serif; letter-spacing:-.01em; line-height:1.2;}
+  .en{font-family:"Fraunces",Georgia,serif; color:var(--en); font-style:italic; font-weight:500;}
+  .es{display:none; font-size:.86em; color:var(--mute); margin-top:.4em;}
+  body[data-es="on"] .es{display:block;}
+  .es-toggle{display:inline-flex; align-items:center; gap:7px; cursor:pointer; margin:2px 0 12px;
+    padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:var(--card);
+    color:var(--mute); font-family:"Space Grotesk"; font-weight:600; font-size:.84rem}
+  .es-toggle[aria-pressed="true"]{color:var(--teal); border-color:color-mix(in srgb,var(--teal) 45%,var(--line)); background:var(--teal-soft)}
+  p{margin:.55em 0}
+  a{color:var(--teal)}
+
+  /* Header */
+  header.top{position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--bg) 86%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .top-in{max-width:680px; margin:0 auto; display:flex; align-items:center; gap:10px; padding:11px 16px;}
+  .brand{font-family:"Space Grotesk"; font-weight:700; font-size:1.18rem; letter-spacing:-.02em; margin-right:auto;}
+  .brand b{color:var(--teal)}
+  .chip{display:inline-flex; align-items:center; gap:5px; font-weight:600; font-size:.84rem;
+    background:var(--card); border:1px solid var(--line); border-radius:999px; padding:5px 11px; box-shadow:var(--shadow);}
+  .chip .ic{font-size:.95rem}
+  .chip.flame{color:var(--amber)}
+  .iconbtn{appearance:none; border:1px solid var(--line); background:var(--card); color:var(--ink);
+    width:38px;height:38px;border-radius:10px; font-size:1.05rem; cursor:pointer; box-shadow:var(--shadow);}
+  .iconbtn:hover{border-color:var(--teal)}
+
+  /* Screens */
+  .screen{display:none; animation:rise .28s ease both}
+  .screen.active{display:block}
+  @keyframes rise{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){ .screen,.screen.active{animation:none} }
+
+  /* Hero / Today */
+  .hero{background:linear-gradient(150deg,var(--teal),var(--teal-d)); color:#fff; border-radius:22px;
+    padding:22px 20px; box-shadow:var(--shadow); position:relative; overflow:hidden;}
+  .hero:after{content:""; position:absolute; right:-50px; top:-50px; width:180px; height:180px;
+    background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%); }
+  .hero .eyebrow{font-size:.74rem; text-transform:uppercase; letter-spacing:.14em; opacity:.85; font-weight:600;}
+  .hero h2{margin:.25em 0 .1em; font-size:1.55rem;}
+  .hero p{opacity:.92; margin:.2em 0 0; font-size:.95rem; max-width:42ch}
+  .hero .due-note{margin-top:14px; font-size:.84rem; opacity:.9}
+  .btn{appearance:none; border:0; cursor:pointer; font-family:"Space Grotesk"; font-weight:600;
+    border-radius:12px; padding:13px 20px; font-size:1rem; transition:transform .08s, filter .15s; }
+  .btn:active{transform:translateY(1px)}
+  .btn-light{background:#fff; color:var(--teal-d); margin-top:16px; box-shadow:0 6px 18px rgba(0,0,0,.18)}
+  .btn-light:hover{filter:brightness(.97)}
+  .btn-primary{background:var(--teal); color:#fff; width:100%; box-shadow:var(--shadow)}
+  .btn-primary:hover{background:var(--teal-d)}
+  .btn-primary:disabled{opacity:.45; cursor:not-allowed}
+  .btn-ghost{background:var(--card); color:var(--ink); border:1px solid var(--line); width:100%}
+  .btn-ghost:hover{border-color:var(--teal)}
+
+  /* Section labels */
+  .lab{display:flex; align-items:baseline; justify-content:space-between; margin:26px 2px 12px;}
+  .lab h3{font-size:1.05rem; margin:0}
+  .lab span{font-size:.8rem; color:var(--mute)}
+
+  /* Level chips */
+  .levels{display:flex; gap:8px; flex-wrap:wrap}
+  .lv{appearance:none; cursor:pointer; border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:7px 14px; font-weight:600; font-size:.86rem; font-family:"Space Grotesk";}
+  .lv[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+
+  /* Category grid */
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  @media(max-width:430px){ .grid{grid-template-columns:1fr} }
+  .cat{cursor:pointer; text-align:left; background:var(--card); border:1px solid var(--line);
+    border-radius:var(--r); padding:15px; box-shadow:var(--shadow); transition:transform .1s, border-color .15s;}
+  .cat:hover{border-color:var(--teal); transform:translateY(-2px)}
+  .cat .ic{font-size:1.5rem}
+  .cat h4{font-family:"Space Grotesk"; margin:8px 0 2px; font-size:1.02rem}
+  .cat p{font-size:.82rem; color:var(--mute); margin:0; min-height:2.4em}
+  .bar{height:6px; border-radius:999px; background:var(--card-2); margin-top:11px; overflow:hidden; display:flex}
+  .bar i{display:block; height:100%}
+  .bar .seen{background:var(--teal)}
+  .bar .mast{background:var(--amber)}
+  .cat .meta{font-size:.72rem; color:var(--mute); margin-top:6px; display:flex; justify-content:space-between}
+
+  /* Cards / theory */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:18px; box-shadow:var(--shadow); margin-bottom:14px;}
+  .theory h2{font-size:1.35rem; margin:.1em 0 .3em}
+  .t-block{margin-bottom:14px}
+  .t-block h4{font-family:"Space Grotesk"; font-size:1.02rem; color:var(--teal-d); margin:0 0 6px; display:flex; gap:8px; align-items:center}
+  [data-theme="dark"] .t-block h4{color:var(--teal)}
+  .t-block ul{margin:.4em 0; padding-left:1.15em}
+  .t-block li{margin:.3em 0}
+  .t-block .en{display:inline}
+  .pill{font-size:.7rem; font-weight:700; padding:2px 8px; border-radius:999px; background:var(--teal-soft); color:var(--teal-d); font-family:"Space Grotesk"}
+  [data-theme="dark"] .pill{color:var(--teal)}
+
+  .backrow{display:flex; align-items:center; gap:10px; margin:2px 0 14px}
+  .back{appearance:none; cursor:pointer; border:1px solid var(--line); background:var(--card); color:var(--ink);
+    border-radius:10px; padding:8px 12px; font-weight:600; font-size:.86rem}
+  .back:hover{border-color:var(--teal)}
+
+  /* Quiz */
+  .qhead{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+  .progress{flex:1; height:8px; background:var(--card); border:1px solid var(--line); border-radius:999px; overflow:hidden}
+  .progress i{display:block; height:100%; background:var(--teal); width:0; transition:width .3s}
+  .qcount{font-size:.82rem; color:var(--mute); font-weight:600; white-space:nowrap}
+  .qcat{display:inline-flex; gap:6px; align-items:center; font-size:.78rem; color:var(--mute); font-weight:600; margin-bottom:8px}
+  .qprompt{font-size:1.22rem; font-family:"Space Grotesk"; font-weight:500; margin:2px 0 16px; line-height:1.35}
+  .qprompt .en{font-family:"Fraunces"; font-weight:500}
+
+  .opts{display:flex; flex-direction:column; gap:10px}
+  .opt{appearance:none; cursor:pointer; text-align:left; width:100%; background:var(--card); color:var(--ink);
+    border:1.5px solid var(--line); border-radius:12px; padding:14px 15px; font-size:1rem; font-family:"Fraunces"; font-style:italic;
+    transition:border-color .12s, background .12s;}
+  .opt:hover{border-color:var(--teal)}
+  .opt[aria-pressed="true"]{border-color:var(--teal); background:var(--teal-soft)}
+  .opt.correct{border-color:var(--leaf); background:color-mix(in srgb,var(--leaf) 14%, var(--card))}
+  .opt.wrong{border-color:var(--coral); background:color-mix(in srgb,var(--coral) 12%, var(--card))}
+  .opt .mk{float:right; font-style:normal; font-weight:700}
+
+  .gap-in{width:100%; font-size:1.05rem; font-family:"Fraunces"; font-style:italic; color:var(--en);
+    border:1.5px solid var(--line); border-radius:12px; padding:14px 15px; background:var(--card);}
+  .gap-in:focus{outline:none; border-color:var(--teal)}
+
+  /* order builder */
+  .build{min-height:54px; border:1.5px dashed var(--line); border-radius:12px; padding:10px; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; background:var(--card-2)}
+  .build:empty:before{content:"Tap the words to build the sentence…"; color:var(--mute); font-size:.9rem; font-style:italic}
+  .bank{display:flex; flex-wrap:wrap; gap:8px}
+  .tok{appearance:none; cursor:pointer; border:1.5px solid var(--line); background:var(--card); color:var(--en);
+    font-family:"Fraunces"; font-style:italic; font-size:1rem; border-radius:10px; padding:9px 13px}
+  .tok:hover{border-color:var(--teal)}
+  .tok.used{opacity:.3; pointer-events:none}
+
+  .speak{appearance:none; cursor:pointer; border:1.5px solid var(--teal); background:var(--teal-soft); color:var(--teal-d);
+    font-family:"Space Grotesk"; font-weight:600; border-radius:12px; padding:13px 18px; font-size:1rem; display:inline-flex; gap:8px; align-items:center}
+  [data-theme="dark"] .speak{color:var(--teal)}
+  .speak:hover{filter:brightness(.97)}
+
+  .feedback{border-radius:12px; padding:13px 15px; margin-top:14px; font-size:.95rem; border:1px solid var(--line)}
+  .feedback.ok{background:color-mix(in srgb,var(--leaf) 12%, var(--card)); border-color:var(--leaf)}
+  .feedback.no{background:color-mix(in srgb,var(--coral) 10%, var(--card)); border-color:var(--coral)}
+  .feedback b{font-family:"Space Grotesk"}
+  .feedback .ans{margin:.3em 0; font-family:"Fraunces"; font-style:italic; color:var(--en)}
+  .qactions{margin-top:16px}
+
+  /* Results */
+  .score-ring{display:flex; align-items:center; gap:18px}
+  .ring{position:relative; width:96px; height:96px; flex:none}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .num{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:"Space Grotesk"; font-weight:700; font-size:1.5rem}
+  .res-line{display:flex; gap:10px; align-items:flex-start; padding:12px 0; border-top:1px solid var(--line)}
+  .res-line .mk{font-weight:700; flex:none; width:22px}
+  .res-line .mk.ok{color:var(--leaf)} .res-line .mk.no{color:var(--coral)}
+  .res-q{font-size:.92rem}
+  .res-q .ans{font-family:"Fraunces"; font-style:italic; color:var(--en)}
+  .res-q .ex{color:var(--mute); font-size:.85rem; margin-top:3px}
+
+  /* Stats */
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:16px; box-shadow:var(--shadow)}
+  .stat .big{font-family:"Space Grotesk"; font-weight:700; font-size:1.8rem; line-height:1}
+  .stat .lbl{font-size:.78rem; color:var(--mute); margin-top:4px}
+  .mbar{display:flex; align-items:center; gap:10px; margin:10px 0}
+  .mbar .name{width:128px; font-size:.84rem; flex:none}
+  .mbar .track{flex:1; height:9px; background:var(--card-2); border-radius:999px; overflow:hidden; display:flex}
+  .mbar .num{font-size:.76rem; color:var(--mute); width:42px; text-align:right; flex:none}
+
+  /* Bottom nav */
+  nav.tabs{position:fixed; bottom:0; left:0; right:0; z-index:40; background:color-mix(in srgb,var(--bg) 90%, transparent);
+    backdrop-filter:blur(10px); border-top:1px solid var(--line); display:flex; justify-content:center; gap:6px; padding:8px 8px calc(8px + env(safe-area-inset-bottom));}
+  .tab{appearance:none; cursor:pointer; background:transparent; border:0; color:var(--mute); font-family:"Space Grotesk"; font-weight:600;
+    font-size:.72rem; padding:6px 8px; border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:3px; flex:1 1 0; max-width:110px}
+  .tab .ic{font-size:1.2rem}
+  .tab[aria-pressed="true"]{color:var(--teal); background:var(--teal-soft)}
+  *:focus-visible{outline:2px solid var(--teal); outline-offset:2px}
+  .muted{color:var(--mute)}
+  .center{text-align:center}
+  /* ===== Dictionary ===== */
+  .dictbar{display:flex; gap:8px; margin:6px 0 16px}
+  .dictbar input{flex:1; min-width:0; font-family:"Inter"; font-size:1rem; padding:13px 14px; border-radius:var(--r-sm);
+    border:1px solid var(--line); background:var(--card); color:var(--ink); outline:none}
+  .dictbar input:focus-visible{border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft)}
+  .dictbar button{flex:0 0 auto; padding:0 16px; border-radius:var(--r-sm); border:0; cursor:pointer;
+    background:var(--teal); color:#fff; font-family:"Space Grotesk"; font-weight:600}
+  .saved-head{display:flex; align-items:center; justify-content:space-between; margin:6px 0 10px}
+  .wchip{display:inline-flex; align-items:center; gap:8px; margin:0 7px 7px 0; padding:8px 12px; cursor:pointer;
+    border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:.92rem}
+  .wchip .x{color:var(--mute); font-weight:700; font-size:.8rem}
+  .dict-empty{color:var(--mute); font-size:.9rem; padding:10px 2px; line-height:1.5}
+
+  /* Tappable word in theory / feedback */
+  .wtap{cursor:pointer; border-bottom:1px dotted color-mix(in srgb,var(--teal) 55%, transparent)}
+  .wtap:active{background:var(--teal-soft)}
+
+  /* Bottom sheet */
+  .sheet-bg{position:fixed; inset:0; z-index:60; background:rgba(10,18,24,.42); display:none;
+    align-items:flex-end; justify-content:center}
+  .sheet-bg.open{display:flex}
+  .sheet{width:100%; max-width:680px; max-height:84vh; overflow:auto; background:var(--card);
+    border-radius:20px 20px 0 0; padding:16px 18px 28px; box-shadow:var(--shadow); animation:rise .26s ease both}
+  .sheet .grip{width:40px; height:4px; border-radius:99px; background:var(--line); margin:0 auto 10px}
+  .phon{color:var(--mute); font-family:"Inter"; font-size:.98rem; margin-top:-2px}
+  .def-block{margin:13px 0 0; line-height:1.5}
+  .pos{display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--teal); background:var(--teal-soft); padding:3px 9px; border-radius:999px; margin-bottom:6px}
+  .def-block .ex{color:var(--mute); font-style:italic; margin-top:3px}
+  .es-box{margin-top:15px; padding:12px 13px; border-radius:var(--r-sm); background:var(--card-2); border:1px solid var(--line)}
+  .es-box .lab{font-size:.7rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--amber); margin-bottom:4px}
+  .es-box .src{font-size:.74rem; color:var(--mute); margin-top:6px; line-height:1.45}
+  .src-tag{font-size:.72rem; color:var(--mute); margin:4px 0 2px}
+  .dir-switch{display:inline-flex; gap:4px; padding:4px; border-radius:999px; background:var(--card-2); border:1px solid var(--line); margin:2px 0 10px}
+  .dir-opt{appearance:none; cursor:pointer; border:0; background:transparent; color:var(--mute); font-family:"Space Grotesk"; font-weight:600; font-size:.84rem; padding:7px 16px; border-radius:999px}
+  .dir-opt[aria-pressed="true"]{background:var(--teal); color:#fff}
+
+  /* ===== Notebook ===== */
+  .note-input{width:100%; box-sizing:border-box; font-family:"Inter"; font-size:1rem; line-height:1.5; padding:13px 14px;
+    border-radius:var(--r-sm); border:1px solid var(--line); background:var(--card); color:var(--ink); outline:none; resize:vertical; min-height:84px}
+  .note-input:focus-visible{border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft)}
+  .src-chips{display:flex; flex-wrap:wrap; gap:7px; margin:10px 0}
+  .src-chip{cursor:pointer; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:var(--card);
+    color:var(--mute); font-size:.84rem; font-family:"Space Grotesk"; font-weight:600}
+  .src-chip[aria-pressed="true"]{color:#fff; background:var(--teal); border-color:var(--teal)}
+  .note-toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:8px 0 14px}
+  .note-search{flex:1; min-width:140px; font-family:"Inter"; font-size:.95rem; padding:10px 12px; border-radius:var(--r-sm);
+    border:1px solid var(--line); background:var(--card); color:var(--ink); outline:none}
+  .exp-btn{cursor:pointer; padding:9px 13px; border-radius:var(--r-sm); border:1px solid var(--line); background:var(--card);
+    color:var(--ink); font-family:"Space Grotesk"; font-weight:600; font-size:.84rem}
+  .exp-btn:active{background:var(--teal-soft)}
+  .note-card{border:1px solid var(--line); background:var(--card); border-radius:var(--r-sm); padding:12px 13px; margin-bottom:10px}
+  .note-card .meta{display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:.74rem; color:var(--mute)}
+  .note-card .tag{font-weight:600; color:var(--teal); background:var(--teal-soft); padding:2px 8px; border-radius:999px; letter-spacing:.02em}
+  .note-card .body{white-space:pre-wrap; line-height:1.5; word-break:break-word}
+  .note-card .acts{display:flex; gap:14px; margin-top:9px}
+  .note-card .acts button{appearance:none; background:none; border:0; cursor:pointer; color:var(--mute); font-size:.8rem; font-weight:600; padding:0}
+  .note-card .acts button:hover{color:var(--teal)}
+  .note-edit{width:100%; box-sizing:border-box; font-family:"Inter"; font-size:1rem; line-height:1.5; padding:10px; border-radius:var(--r-sm);
+    border:1px solid var(--teal); background:var(--card); color:var(--ink); outline:none; resize:vertical; min-height:70px}
+  .notes-empty{color:var(--mute); font-size:.92rem; line-height:1.55; padding:14px 2px}
+  .save-hint{font-size:.78rem; color:var(--mute); margin:-4px 0 14px; line-height:1.5}
+  .note-form{display:flex; flex-direction:column; gap:9px; margin-bottom:10px}
+  .fld{display:flex; flex-direction:column; gap:4px}
+  .fld>span{font-size:.72rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--mute)}
+  .cell-in{width:100%; box-sizing:border-box; font-family:"Inter"; font-size:1rem; padding:11px 12px; border-radius:var(--r-sm);
+    border:1px solid var(--line); background:var(--card); color:var(--ink); outline:none}
+  .cell-in:focus-visible{border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft)}
+  .cell-in.ta{resize:vertical; min-height:60px; line-height:1.5}
+  .ncell{display:flex; gap:10px; padding:6px 0; border-top:1px solid var(--line)}
+  .ncell:first-child{border-top:0; padding-top:0}
+  .ncell .k{flex:0 0 76px; font-size:.7rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase; color:var(--mute); padding-top:3px}
+  .ncell .v{flex:1; line-height:1.5; word-break:break-word; white-space:pre-wrap}
+  .ncell .v.word{font-family:"Fraunces",Georgia,serif; font-style:italic; color:var(--en); font-size:1.08rem}
+  .notebook-sheet{width:100%; box-sizing:border-box; min-height:58vh; resize:vertical; font-family:"Inter";
+    font-size:1.02rem; line-height:1.7; padding:18px; border-radius:var(--r); border:1px solid var(--line);
+    background:var(--card); color:var(--ink); outline:none; box-shadow:var(--shadow)}
+  .notebook-sheet:focus-visible{border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft)}
+  .resume-bar{position:fixed; left:50%; transform:translateX(-50%); bottom:80px; z-index:45; display:none;
+    align-items:center; gap:6px; max-width:92%; cursor:pointer; background:var(--teal); color:#fff; border:0;
+    border-radius:999px; padding:11px 18px; font-family:"Space Grotesk"; font-weight:600; font-size:.9rem; box-shadow:var(--shadow)}
+  .resume-bar.show{display:inline-flex}
+  .sheet-row{display:flex; gap:8px; align-items:center; margin-top:16px; flex-wrap:wrap}
+  .dict-loading{display:flex; align-items:center; gap:10px; color:var(--mute); padding:14px 0}
+  .spin{width:18px; height:18px; border:2px solid var(--line); border-top-color:var(--teal); border-radius:50%; animation:sp .7s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){ .spin{animation:none} .sheet{animation:none} }
+</style>
+</head>
+<body data-theme="light">
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">Fluent<b>·</b>Lab</div>
+    <span class="chip flame" title="Day streak"><span class="ic">🔥</span><span id="hdrStreak">0</span></span>
+    <span class="chip" title="Level"><span class="ic">⭐</span>Lv <span id="hdrLevel">1</span></span>
+    <button class="iconbtn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HOME -->
+  <section class="screen active" id="scr-home">
+    <div class="hero">
+      <div class="eyebrow">Today’s session</div>
+      <h2>Daily Mix</h2>
+      <p>Spaced review of what you’re about to forget, plus a few fresh items. The smart way to actually retain it.</p>
+      <div class="due-note" id="dueNote">Loading your plan…</div>
+      <button class="btn btn-light" id="startDaily">Start today’s session →</button>
+    </div>
+
+    <div class="lab"><h3>Focus level</h3><span>filters the difficulty</span></div>
+    <div class="levels" id="levelChips">
+      <button class="lv" data-lv="all" aria-pressed="true">All</button>
+      <button class="lv" data-lv="B1" aria-pressed="false">B1</button>
+      <button class="lv" data-lv="B2" aria-pressed="false">B2</button>
+      <button class="lv" data-lv="C1" aria-pressed="false">C1</button>
+      <button class="lv" data-lv="C2" aria-pressed="false">C2</button>
+    </div>
+
+    <div class="lab"><h3>Choose a topic</h3><span>theory + practice</span></div>
+    <div class="grid" id="catGrid"></div>
+
+    <p class="muted center" style="margin:22px 0 4px; font-size:.82rem">
+      Your progress is saved on this device. Practice a little every day — that’s the whole trick.
+    </p>
+    <p class="muted center" style="margin:2px 0 4px; font-size:.72rem; opacity:.8">Build 12 · 27 Jun 2026 · 10 fresh rounds before repeats</p>
+  </section>
+
+  <!-- CATEGORY / THEORY -->
+  <section class="screen" id="scr-cat">
+    <div class="backrow"><button class="back" data-go="home">← Home</button></div>
+    <div class="theory">
+      <h2 id="catTitle"></h2>
+      <p class="muted" id="catBlurb" style="margin-top:-4px"></p>
+      <button class="es-toggle" id="esToggle" aria-pressed="false" type="button">🇪🇸 Spanish hints: off</button>
+      <div id="theoryBody"></div>
+    </div>
+    <button class="btn btn-primary" id="practiceCat">Practice this topic</button>
+    <div style="height:10px"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="screen" id="scr-quiz">
+    <div class="qhead">
+      <button class="back" id="quitQuiz">✕</button>
+      <div class="progress"><i id="progBar"></i></div>
+      <div class="qcount" id="qCount">1 / 10</div>
+    </div>
+    <div class="card">
+      <div class="qcat" id="qCat"></div>
+      <div class="qprompt" id="qPrompt"></div>
+      <div id="qBody"></div>
+      <div id="qFeedback"></div>
+      <div class="qactions"><button class="btn btn-primary" id="qBtn" disabled>Check</button></div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="screen" id="scr-res">
+    <div class="card">
+      <div class="score-ring">
+        <div class="ring">
+          <svg width="96" height="96"><circle cx="48" cy="48" r="42" fill="none" stroke="var(--line)" stroke-width="9"></circle>
+            <circle id="ringFill" cx="48" cy="48" r="42" fill="none" stroke="var(--teal)" stroke-width="9" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"></circle></svg>
+          <div class="num" id="ringNum">0%</div>
+        </div>
+        <div>
+          <h2 style="margin:0 0 2px" id="resTitle">Nice work</h2>
+          <p class="muted" style="margin:0" id="resSub"></p>
+          <p style="margin:8px 0 0; font-family:'Space Grotesk'; font-weight:600; color:var(--amber)" id="resXp"></p>
+        </div>
+      </div>
+    </div>
+    <div class="lab"><h3>Review &amp; corrections</h3><span>learn from every miss</span></div>
+    <div id="resList"></div>
+    <button class="btn btn-primary" id="againBtn">New session →</button>
+    <div style="height:8px"></div>
+    <button class="btn btn-ghost" data-go="home">Back to home</button>
+    <div style="height:10px"></div>
+  </section>
+
+  <!-- STATS -->
+  <section class="screen" id="scr-stats">
+    <div class="lab" style="margin-top:6px"><h3>Your progress</h3><span id="totalAnswered"></span></div>
+    <div class="stat-grid" style="margin-bottom:14px">
+      <div class="stat"><div class="big" id="stStreak">0</div><div class="lbl">🔥 Day streak</div></div>
+      <div class="stat"><div class="big" id="stXp">0</div><div class="lbl">⭐ XP · Level <span id="stLevel">1</span></div></div>
+      <div class="stat"><div class="big" id="stAcc">—</div><div class="lbl">🎯 Overall accuracy</div></div>
+      <div class="stat"><div class="big" id="stMast">0</div><div class="lbl">🏆 Items mastered</div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 6px">Mastery by topic</h3>
+      <p class="muted" style="margin:0 0 8px; font-size:.82rem">Teal = seen · amber = mastered (long-term)</p>
+      <div id="masteryBars"></div>
+    </div>
+    <button class="btn btn-ghost" id="resetBtn" style="margin-top:6px">Reset all progress</button>
+    <div style="height:10px"></div>
+  </section>
+
+  <!-- DICTIONARY -->
+  <section class="screen" id="scr-dict">
+    <div class="lab" style="margin-top:6px"><h3>Dictionary</h3><span class="muted" style="font-size:.82rem">EN ⇄ ES</span></div>
+    <div class="dir-switch" id="dirSwitch">
+      <button class="dir-opt" data-dir="en" aria-pressed="true" type="button">EN → ES</button>
+      <button class="dir-opt" data-dir="es" aria-pressed="false" type="button">ES → EN</button>
+    </div>
+    <p class="muted" id="dictHint" style="margin:0 0 8px; font-size:.86rem; line-height:1.5">Type an English word or phrase. You get a full English definition with pronunciation, synonyms, antonyms and examples, plus the Spanish meaning.</p>
+    <div class="dictbar">
+      <input id="dictInput" type="text" inputmode="search" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Type a word, e.g. thrive">
+      <button id="dictGo">Look up</button>
+    </div>
+    <div class="saved-head"><h3 style="margin:0; font-family:'Space Grotesk'; font-size:1.02rem">Saved words</h3><span class="muted" id="savedCount" style="font-size:.82rem"></span></div>
+    <div id="savedWrap"></div>
+    <div style="height:14px"></div>
+  </section>
+
+  <!-- NOTEBOOK -->
+  <section class="screen" id="scr-notes">
+    <div class="lab" style="margin-top:6px"><h3>My notebook</h3><span class="muted" id="notesCount" style="font-size:.82rem"></span></div>
+    <p class="muted" style="margin:0 0 10px; font-size:.88rem; line-height:1.5">One continuous page. Write anything you pick up from movies, music, Instagram or talks. It saves on its own as you type.</p>
+    <textarea id="notebook" class="notebook-sheet" placeholder="Start writing here…
+
+to ghost someone — to disappear and stop replying (heard in a series)
+lit — excellent, exciting
+no cap — for real, no lie"></textarea>
+    <div class="note-toolbar">
+      <button class="exp-btn" id="expWord" type="button">⬇ Word</button>
+      <button class="exp-btn" id="expTxt" type="button">⬇ Text</button>
+      <button class="exp-btn" id="copyAll" type="button">⧉ Copy all</button>
+      <button class="exp-btn" id="impNote" type="button">⬆ Import</button>
+      <button class="exp-btn" id="clearNote" type="button">🗑 Clear</button>
+      <input type="file" id="impFile" accept=".txt,.md,.doc,text/plain" style="display:none">
+      <span class="muted" id="nbSaved" style="font-size:.78rem; margin-left:auto"></span>
+    </div>
+    <p class="save-hint">Your notebook saves automatically and keeps a backup on this device. Because the app can be reopened as a new copy, the only way to never lose your notes is to export them to Text or Word, and use Import to bring them back. Nothing is deleted until you tap Clear.</p>
+    <div style="height:14px"></div>
+  </section>
+
+</main>
+
+<button class="resume-bar" id="resumeBar"><span>↩ Back to your exercise</span><span id="resumeInfo"></span></button>
+
+<nav class="tabs">
+  <button class="tab" data-go="home" aria-pressed="true"><span class="ic">📖</span>Learn</button>
+  <button class="tab" data-go="dict" aria-pressed="false"><span class="ic">🔤</span>Words</button>
+  <button class="tab" data-go="notes" aria-pressed="false"><span class="ic">🗒️</span>Notebook</button>
+  <button class="tab" data-go="stats" aria-pressed="false"><span class="ic">📊</span>Progress</button>
+</nav>
+
+<div class="sheet-bg" id="sheetBg" role="dialog" aria-modal="true" aria-label="Word definition">
+  <div class="sheet" id="sheet">
+    <div class="grip"></div>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<script>
+/* ====================== DATA ====================== */
+const CATS = [
+  { id:"tenses",  name:"Tenses & Grammar",   icon:"⏳", blurb:"Verb tenses, aspect, the engine room of English." },
+  { id:"cond",    name:"Conditionals",        icon:"🔀", blurb:"If, wish, mixed, inversion, hypotheticals." },
+  { id:"phrasal", name:"Phrasal Verbs",       icon:"🧩", blurb:"The most American part of the language." },
+  { id:"idioms",  name:"Idioms",              icon:"💬", blurb:"Expressions a native uses without thinking." },
+  { id:"colloc",  name:"Collocations",        icon:"🔗", blurb:"Words that travel together. C1/C2 gold." },
+  { id:"phrases", name:"Everyday Phrases",     icon:"☕", blurb:"Functional language for real situations." },
+  { id:"slang",   name:"Slang",               icon:"🎧", blurb:"Modern, informal, current US slang." },
+  { id:"vocab",   name:"Vocabulary",          icon:"📚", blurb:"Ways of saying, register, word formation." },
+  { id:"pron",    name:"Pronunciation",       icon:"🔊", blurb:"IPA, American sounds, minimal pairs, audio." },
+  { id:"adv",     name:"Advanced Structures", icon:"🏛️", blurb:"Inversion, cleft, reported speech, subjunctive." }
+];
+
+const THEORY = {
+  tenses:[
+    {title:"The 12 tenses at a glance",html:`<p>English builds tense from <b>time</b> (past / present / future) crossed with <b>aspect</b> (simple / continuous / perfect / perfect continuous).</p><p class="en">I work · I'm working · I've worked · I've been working</p><ul><li><b>Simple</b> = fact / habit / finished. <span class="en">I drink coffee.</span></li><li><b>Continuous</b> = in progress, temporary. <span class="en">I'm drinking coffee.</span></li><li><b>Perfect</b> = link between two times. <span class="en">I've drunk three cups.</span></li><li><b>Perfect continuous</b> = duration up to now. <span class="en">I've been drinking coffee all morning.</span></li></ul><p class="es">Pista: el español usa un solo presente donde el inglés distingue aspecto; acá el aspecto cambia el significado.</p>`},
+    {title:"Present perfect vs past simple",html:`<p>The number-one error for learners.</p><p><b>Past simple</b> = finished time. <span class="en">I saw her yesterday.</span></p><p><b>Present perfect</b> = unfinished time, or a past event with present relevance. <span class="en">I've lost my keys.</span> (and still don't have them)</p><p><b>Rule:</b> a finished-time marker (yesterday, in 2019) takes past simple. Open time (today, ever, never, just, already, yet) takes present perfect.</p>`},
+    {title:"Narrative tenses (storytelling)",html:`<ul><li><b>Past simple</b> — main events in order. <span class="en">I woke up and went out.</span></li><li><b>Past continuous</b> — the background. <span class="en">The sun was shining.</span></li><li><b>Past perfect</b> — earlier than the story. <span class="en">I had already left when she called.</span></li></ul><p>Past perfect marks the "before-the-before".</p>`},
+    {title:"Future forms (not interchangeable)",html:`<ul><li><b>will</b> — decision now, prediction, promise. <span class="en">I'll help you.</span></li><li><b>going to</b> — plan or evidence. <span class="en">It's going to rain.</span></li><li><b>present continuous</b> — fixed arrangement. <span class="en">I'm meeting Sara at 6.</span></li><li><b>future perfect</b> — finished before a future point. <span class="en">By July I'll have moved.</span></li></ul>`}
+  ],
+  cond:[
+    {title:"The four conditionals",html:`<ul><li><b>Zero</b> (general truth): <span class="en">If you heat ice, it melts.</span></li><li><b>First</b> (real future): <span class="en">If it rains, I'll stay home.</span></li><li><b>Second</b> (unreal present): <span class="en">If I had time, I'd travel more.</span></li><li><b>Third</b> (unreal past): <span class="en">If I had known, I would have called.</span></li></ul><p>In the second and third, the if-clause shifts one tense back into the past.</p>`},
+    {title:"Mixed conditionals (C1)",html:`<p>Mix when the condition and the result sit in different times.</p><p class="en">If I had studied medicine, I'd be a doctor now.</p><p class="en">If I were more organized, I wouldn't have missed it.</p>`},
+    {title:"wish / if only",html:`<ul><li>Regret about <b>now</b>: <span class="en">I wish I had more money.</span></li><li>Regret about the <b>past</b>: <span class="en">I wish I had studied harder.</span></li><li>Annoyance: <span class="en">I wish you would stop doing that.</span></li></ul>`},
+    {title:"Inverted conditionals (formal, C2)",html:`<p>Drop <i>if</i> and invert for a formal register:</p><p class="en">Had I known, I would have helped.</p><p class="en">Were I you, I'd accept. · Should you need anything, call me.</p>`}
+  ],
+  phrasal:[
+    {title:"What a phrasal verb is",html:`<p>A verb plus a particle makes a new meaning. <span class="en">give up</span> is not give + up literally.</p><p><b>Separable:</b> <span class="en">turn the TV off / turn off the TV.</span> A pronoun must go in the middle: <span class="en">turn it off</span> (never "turn off it").</p><p><b>Inseparable:</b> <span class="en">I ran into an old friend.</span></p>`},
+    {title:"High-frequency American ones",html:`<ul><li><span class="en">figure out</span> — to understand or solve. <span class="en">I can't figure out this puzzle.</span></li><li><span class="en">work out</span> — to exercise; or to end well. <span class="en">It worked out fine.</span></li><li><span class="en">check out</span> — to look at or try; also to leave a hotel.</li><li><span class="en">hang out</span> — to spend relaxed time. <span class="en">We hung out all day.</span></li><li><span class="en">come up with</span> — to produce or invent an idea.</li><li><span class="en">put up with</span> — to tolerate something.</li><li><span class="en">run out of</span> — to have none left.</li></ul>`}
+  ],
+  idioms:[
+    {title:"How idioms behave",html:`<p>An idiom's meaning is not the sum of its words. Learn it as one chunk, with its context.</p><p>Don't read it literally: <span class="en">raining cats and dogs</span> has nothing to do with animals; it just means raining hard.</p>`},
+    {title:"Everyday American idioms",html:`<ul><li><span class="en">a piece of cake</span> — very easy. <span class="en">The test was a piece of cake.</span></li><li><span class="en">hit the sack</span> — to go to bed.</li><li><span class="en">under the weather</span> — feeling ill.</li><li><span class="en">cut to the chase</span> — to get to the point.</li><li><span class="en">on the same page</span> — in agreement.</li><li><span class="en">break the ice</span> — to ease the tension at the start.</li></ul>`}
+  ],
+  colloc:[
+    {title:"The C2 secret",html:`<p>At advanced levels, errors stop being grammar and become <b>word partnership</b>. Natives say <span class="en">make a decision</span>, not "do a decision"; <span class="en">heavy rain</span>, not "strong rain".</p><p>Sounding native means picking the right partner word for each word.</p>`},
+    {title:"make vs do",html:`<ul><li><b>make</b> = create a result: <span class="en">make a mistake, make money, make progress.</span></li><li><b>do</b> = perform a task: <span class="en">do homework, do the dishes, do research.</span></li></ul>`},
+    {title:"Strong advanced collocations",html:`<ul><li><span class="en">draw a conclusion</span></li><li><span class="en">meet a deadline</span></li><li><span class="en">pose a threat</span></li><li><span class="en">bear in mind</span></li><li><span class="en">a foregone conclusion</span></li></ul>`}
+  ],
+  phrases:[
+    {title:"Sounding natural",html:`<ul><li>Ask again: <span class="en">Sorry, could you say that again?</span></li><li>Buy time: <span class="en">Let me think… / Give me a second.</span></li><li>Agree: <span class="en">Fair enough. / That makes sense.</span></li><li>Soften: <span class="en">I'm not sure that's the best idea.</span></li><li>Exit: <span class="en">Anyway, I should get going.</span></li></ul>`}
+  ],
+  slang:[
+    {title:"Reading the room",html:`<p>Slang is informal and context-bound. Great with friends, risky in interviews. Learn it to understand; choose carefully when to use it.</p><ul><li><span class="en">It's lit</span> — it's awesome.</li><li><span class="en">No cap</span> — no lie, for real.</li><li><span class="en">I'm beat</span> — I'm exhausted.</li><li><span class="en">My bad</span> — my mistake.</li><li><span class="en">Hang tight</span> — wait.</li><li><span class="en">That slaps</span> — that's really good.</li></ul><p>Heads up: slang dates fast.</p>`}
+  ],
+  vocab:[
+    {title:"Ways of saying… (register ladder)",html:`<p>One idea, many words. Choosing register is half of C2. From informal to formal:</p><p><b>tired:</b> <span class="en">beat / wiped out</span> · <span class="en">tired</span> · <span class="en">fatigued / exhausted</span></p><p><b>good:</b> <span class="en">awesome / great</span> · <span class="en">good</span> · <span class="en">excellent / outstanding</span></p><p><b>say:</b> <span class="en">go (he was like…)</span> · <span class="en">say</span> · <span class="en">state / remark / assert</span></p>`},
+    {title:"Word formation (build, don't memorize)",html:`<p>One root grows a family.</p><p class="en">decide → decision → decisive → decisively → indecisive</p><ul><li><b>-tion / -ment / -ness</b> → nouns</li><li><b>-ize / -en / -ify</b> → verbs</li><li><b>-ful / -less / -ous / -ive</b> → adjectives</li><li><b>un- / in- / dis- / mis-</b> → opposite</li></ul>`},
+    {title:"Shades of meaning",html:`<p><span class="en">thin</span> (neutral) / <span class="en">slim</span> (positive) / <span class="en">skinny</span> (negative) / <span class="en">slender</span> (literary).</p><p>Synonyms are almost never fully interchangeable.</p>`}
+  ],
+  pron:[
+    {title:"American English: headline features",html:`<ul><li><b>Rhotic R</b> — the /r/ is pronounced everywhere: <span class="en">car, hard, mother</span>.</li><li><b>Flap T</b> — t between vowels sounds like a soft d: <span class="en">water, better, city</span>.</li><li><b>Schwa /ə/</b> — unstressed vowels reduce to "uh": <span class="en">banana</span> /bəˈnænə/.</li><li><b>Word stress</b> — one strong syllable; wrong stress breaks comprehension.</li><li><b>Linking</b> — <span class="en">an apple</span> → "a-napple".</li></ul>`},
+    {title:"Mini IPA key (General American)",html:`<p>Vowels: /iː/ see · /ɪ/ sit · /æ/ cat · /ɑː/ father · /ʌ/ cup · /ə/ about · /ɜːr/ bird · /uː/ too · /ʊ/ book · /ɔː/ thought</p><p>Consonants: /θ/ think · /ð/ this · /ʃ/ ship · /ʒ/ vision · /tʃ/ chair · /dʒ/ joke · /ŋ/ sing</p><p>Use the 🔊 button in the exercises to hear the model.</p>`},
+    {title:"Minimal pairs (train your ear)",html:`<p>Pairs that differ by one sound. If you can't hear it, you can't say it.</p><p class="en">ship /ɪ/ — sheep /iː/ · bad /æ/ — bed /e/ · full /ʊ/ — fool /uː/ · thin /θ/ — sin /s/</p>`}
+  ],
+  adv:[
+    {title:"Inversion for emphasis (C1/C2)",html:`<p>Put a negative or limiting adverb first, then invert subject and auxiliary.</p><p class="en">Never have I seen such a mess.</p><p class="en">Not only did she win, but she also broke the record.</p><p class="en">Rarely do we get a second chance.</p>`},
+    {title:"Cleft sentences (focus)",html:`<p>Split a sentence to spotlight one part.</p><p class="en">It was John who broke it. · What I need is a break.</p>`},
+    {title:"Reported speech (shifts)",html:`<p>Backshift the tense and change time and place words.</p><p class="en">"I'll call you tomorrow." → She said she'd call me the next day.</p><p>Common shifts: tomorrow → the next day, here → there, this → that, now → then.</p>`},
+    {title:"Subjunctive & unreal past",html:`<p>After <i>suggest, insist, demand, essential that…</i> use the bare base form.</p><p class="en">I suggest he be on time. · It's essential that she arrive early.</p><p class="en">It's time we left. · I'd rather you didn't smoke.</p>`}
+  ]
+};
+
+const BANK = [
+  {id:"t1",cat:"tenses",lvl:"B1",type:"mcq",q:"I ___ my homework yet.",options:["didn't finish","haven't finished","don't finish","not finished"],answer:1,ex:"'yet' signals unfinished time → present perfect."},
+  {id:"t2",cat:"tenses",lvl:"B1",type:"mcq",q:"We ___ to Chicago last summer.",options:["have gone","went","go","were going"],answer:1,ex:"'last summer' = finished time → past simple 'went'."},
+  {id:"t3",cat:"tenses",lvl:"B2",type:"gap",q:"By the time we arrived, the movie ___ (start) already.",accept:["had started"],answer:"had started",ex:"Action before another past action → past perfect."},
+  {id:"t4",cat:"tenses",lvl:"B2",type:"mcq",q:"Look at those clouds! It ___.",options:["will rain","rains","is going to rain","would rain"],answer:2,ex:"Evidence in front of you → 'going to'."},
+  {id:"t5",cat:"tenses",lvl:"B2",type:"gap",q:"I ___ (live) here for ten years and I love it.",accept:["have lived","'ve lived","have been living","'ve been living"],answer:"have lived / have been living",ex:"Duration up to now → present perfect."},
+  {id:"t6",cat:"tenses",lvl:"B2",type:"order",q:"Build the sentence:",tokens:["She","was","cooking","when","the","phone","rang"],ex:"Past continuous (background) + past simple (interruption)."},
+  {id:"t7",cat:"tenses",lvl:"C1",type:"mcq",q:"By next June, I ___ here for five years.",options:["will work","will have been working","work","am working"],answer:1,ex:"Duration completed by a future point → future perfect continuous."},
+  {id:"t8",cat:"tenses",lvl:"B1",type:"mcq",q:"Choose the correct one:",options:["I have seen her yesterday.","I saw her yesterday.","I see her yesterday.","I had saw her yesterday."],answer:1,ex:"'yesterday' is finished time → past simple."},
+  {id:"t9",cat:"tenses",lvl:"C1",type:"gap",q:"This is the first time I ___ (try) sushi.",accept:["have tried","'ve tried"],answer:"have tried",ex:"'It's the first time…' takes present perfect."},
+  {id:"t10",cat:"tenses",lvl:"B2",type:"mcq",q:"I'm exhausted — I ___ all day.",options:["work","have been working","worked","am working"],answer:1,ex:"Visible result now + duration → present perfect continuous."},
+
+  {id:"c1",cat:"cond",lvl:"B1",type:"mcq",q:"If it ___ tomorrow, we'll cancel the trip.",options:["rains","will rain","rained","would rain"],answer:0,ex:"First conditional: present simple in the if-clause."},
+  {id:"c2",cat:"cond",lvl:"B2",type:"mcq",q:"If I ___ you, I'd take the job.",options:["am","was","were","would be"],answer:2,ex:"Second conditional: 'were' for all persons (standard)."},
+  {id:"c3",cat:"cond",lvl:"B2",type:"gap",q:"If she had left earlier, she ___ (not miss) the train.",accept:["wouldn't have missed","would not have missed"],answer:"wouldn't have missed",ex:"Third conditional: would have + past participle."},
+  {id:"c4",cat:"cond",lvl:"C1",type:"mcq",q:"If I had saved money back then, I ___ a house now. (mixed)",options:["would have","would have had","would have bought","would own"],answer:3,ex:"Mixed: past condition → present result."},
+  {id:"c5",cat:"cond",lvl:"B2",type:"gap",q:"I wish I ___ (know) the answer right now.",accept:["knew"],answer:"knew",ex:"'wish' + past form = regret about the present."},
+  {id:"c6",cat:"cond",lvl:"C1",type:"gap",q:"I wish I ___ (study) harder for that exam last year.",accept:["had studied"],answer:"had studied",ex:"'wish' + past perfect = regret about the past."},
+  {id:"c7",cat:"cond",lvl:"C2",type:"mcq",q:"___ I known, I would have warned you. (formal inversion)",options:["If had","Had","Have","If have"],answer:1,ex:"Inverted third conditional: 'Had I known…'."},
+  {id:"c8",cat:"cond",lvl:"C1",type:"order",q:"Build a formal conditional:",tokens:["Should","you","need","help",",","call","me"],ex:"'Should you need…' = 'If you need…' (formal)."},
+  {id:"c9",cat:"cond",lvl:"C2",type:"mcq",q:"I'd rather you ___ that.",options:["don't do","didn't do","won't do","not do"],answer:1,ex:"'would rather + someone + past form' = unreal preference."},
+
+  {id:"p1",cat:"phrasal",lvl:"B1",type:"mcq",q:"I can't ___ this math problem.",options:["figure out","figure on","figure up","figure in"],answer:0,ex:"'figure out' = understand/solve."},
+  {id:"p2",cat:"phrasal",lvl:"B1",type:"mcq",q:"Turn ___! It's too loud.",options:["it down","down it","off it","it of"],answer:0,ex:"Separable + pronoun → pronoun in the middle: 'turn it down'."},
+  {id:"p3",cat:"phrasal",lvl:"B2",type:"gap",q:"We've ___ milk. Can you buy some? (= no more left, 3 words)",accept:["run out of"],answer:"run out of",ex:"'run out of' = to have none left."},
+  {id:"p4",cat:"phrasal",lvl:"B2",type:"mcq",q:"I ___ an old colleague at the airport. (= met by chance)",options:["ran into","ran over","ran out","ran up"],answer:0,ex:"'run into someone' = meet by chance."},
+  {id:"p5",cat:"phrasal",lvl:"B2",type:"mcq",q:"She ___ a great idea for the campaign.",options:["came up with","came across","came over","came down with"],answer:0,ex:"'come up with' = produce/think of an idea."},
+  {id:"p6",cat:"phrasal",lvl:"C1",type:"mcq",q:"I won't ___ this behavior any longer. (= tolerate)",options:["put up with","put off","put down","put up"],answer:0,ex:"'put up with' = tolerate."},
+  {id:"p7",cat:"phrasal",lvl:"B2",type:"gap",q:"The meeting was ___ until Friday. (= postponed, 2 words)",accept:["put off"],answer:"put off",ex:"'put off' = postpone."},
+  {id:"p8",cat:"phrasal",lvl:"C1",type:"mcq",q:"He ___ a cold right before the trip. (= became ill)",options:["came down with","came up with","came across","came into"],answer:0,ex:"'come down with (an illness)' = start to be ill."},
+  {id:"p9",cat:"phrasal",lvl:"B1",type:"order",q:"Build the sentence:",tokens:["Let's","hang","out","this","weekend"],ex:"'hang out' = spend time socializing."},
+
+  {id:"i1",cat:"idioms",lvl:"B1",type:"mcq",q:"The exam was a piece of cake. It means it was…",options:["delicious","very easy","very hard","boring"],answer:1,ex:"'a piece of cake' = very easy."},
+  {id:"i2",cat:"idioms",lvl:"B2",type:"mcq",q:"I'm feeling under the weather today.",options:["I'm cold","I'm slightly ill","I'm outdoors","I'm worried"],answer:1,ex:"'under the weather' = feeling unwell."},
+  {id:"i3",cat:"idioms",lvl:"B2",type:"mcq",q:"Let's cut to the chase.",options:["go for a run","get to the point","leave quickly","change the subject"],answer:1,ex:"'cut to the chase' = get to the point."},
+  {id:"i4",cat:"idioms",lvl:"B2",type:"gap",q:"Before we decide, let's make sure we're on the same ___.",accept:["page"],answer:"page",ex:"'on the same page' = in agreement."},
+  {id:"i5",cat:"idioms",lvl:"C1",type:"mcq",q:"That idea? It's a no-brainer.",options:["it's stupid","it's an obvious good choice","it's confusing","it's risky"],answer:1,ex:"'a no-brainer' = an obvious, easy decision."},
+  {id:"i6",cat:"idioms",lvl:"C1",type:"mcq",q:"He let the cat out of the bag.",options:["freed a pet","revealed a secret","made a mess","got angry"],answer:1,ex:"'let the cat out of the bag' = reveal a secret."},
+  {id:"i7",cat:"idioms",lvl:"C1",type:"mcq",q:"We'll have to play it by ear.",options:["listen to music","decide as we go","be very careful","copy someone"],answer:1,ex:"'play it by ear' = improvise."},
+  {id:"i8",cat:"idioms",lvl:"C2",type:"mcq",q:"That's the straw that broke the camel's back.",options:["a lucky break","the final small thing that caused a collapse","a heavy load","a fair deal"],answer:1,ex:"The last minor thing that makes a situation unbearable."},
+
+  {id:"k1",cat:"colloc",lvl:"B1",type:"mcq",q:"I need to ___ a decision by Friday.",options:["do","make","take","have"],answer:1,ex:"'make a decision' (in AmE 'make' is standard)."},
+  {id:"k2",cat:"colloc",lvl:"B1",type:"mcq",q:"Can you ___ me a favor?",options:["make","do","give","take"],answer:1,ex:"'do someone a favor'."},
+  {id:"k3",cat:"colloc",lvl:"B2",type:"mcq",q:"We had ___ rain all weekend.",options:["strong","heavy","big","hard"],answer:1,ex:"'heavy rain'. Wind is 'strong'; rain is 'heavy'."},
+  {id:"k4",cat:"colloc",lvl:"B2",type:"gap",q:"It's hard to ___ a deadline this tight. (= finish on time)",accept:["meet"],answer:"meet",ex:"'meet a deadline'."},
+  {id:"k5",cat:"colloc",lvl:"C1",type:"mcq",q:"From the data we can ___ a clear conclusion.",options:["make","do","draw","take"],answer:2,ex:"'draw a conclusion'."},
+  {id:"k6",cat:"colloc",lvl:"C1",type:"mcq",q:"Please ___ in mind that prices may change.",options:["take","bear","hold","give"],answer:1,ex:"'bear in mind' (formal) / 'keep in mind'."},
+  {id:"k7",cat:"colloc",lvl:"C2",type:"mcq",q:"Their dominance made the result a ___ conclusion.",options:["forgone","foregone","fore-gone","forgotten"],answer:1,ex:"'a foregone conclusion' = certain in advance."},
+  {id:"k8",cat:"colloc",lvl:"C1",type:"mcq",q:"The policy could ___ a serious threat to jobs.",options:["make","pose","give","do"],answer:1,ex:"'pose a threat'."},
+
+  {id:"f1",cat:"phrases",lvl:"B1",type:"mcq",q:"You didn't hear someone. Most natural reply:",options:["Repeat!","What you say?","Sorry, could you say that again?","Again please now."],answer:2,ex:"Polite and natural."},
+  {id:"f2",cat:"phrases",lvl:"B2",type:"mcq",q:"A plan sounds logical. You say:",options:["That makes sense.","That is logic.","I am agree.","Of course not."],answer:0,ex:"'That makes sense.' Note: 'I agree', never 'I am agree'."},
+  {id:"f3",cat:"phrases",lvl:"B2",type:"mcq",q:"End a conversation politely:",options:["I go now.","Anyway, I should get going.","Finish the talk.","Bye obligatory."],answer:1,ex:"'Anyway, I should get going.' is the natural exit."},
+  {id:"f4",cat:"phrases",lvl:"B2",type:"gap",q:"Reluctant agreement: 'Fair ___.' (= ok, I accept your point)",accept:["enough"],answer:"enough",ex:"'Fair enough.'"},
+  {id:"f5",cat:"phrases",lvl:"C1",type:"mcq",q:"Soften disagreement at work:",options:["You're wrong.","That's a terrible idea.","I'm not sure that's the best approach.","No way."],answer:2,ex:"Diplomatic hedging keeps it professional."},
+  {id:"f6",cat:"phrases",lvl:"B1",type:"order",q:"Build a natural request:",tokens:["Do","you","mind","if","I","open","the","window","?"],ex:"'Do you mind if I…?' politely asks permission."},
+
+  {id:"s1",cat:"slang",lvl:"B2",type:"mcq",q:"'That party was lit!' means it was…",options:["on fire","awesome","cancelled","quiet"],answer:1,ex:"'lit' = exciting/awesome."},
+  {id:"s2",cat:"slang",lvl:"B2",type:"mcq",q:"'I'm beat.'",options:["I won","I'm exhausted","I lost","I'm angry"],answer:1,ex:"'beat' = very tired."},
+  {id:"s3",cat:"slang",lvl:"B2",type:"mcq",q:"'No cap, that's the best burger in town.'",options:["no hat","no limit","no lie / for real","no way"],answer:2,ex:"'no cap' = seriously, not lying."},
+  {id:"s4",cat:"slang",lvl:"B1",type:"mcq",q:"You bump into someone by accident. You say:",options:["My bad.","My fault is.","Excuse to me.","I sorry."],answer:0,ex:"'My bad.' = my mistake (casual)."},
+  {id:"s5",cat:"slang",lvl:"C1",type:"mcq",q:"'Hang tight, I'll be right back.'",options:["hold on / wait","hold the rope","relax fully","leave now"],answer:0,ex:"'hang tight' = wait patiently."},
+  {id:"s6",cat:"slang",lvl:"C1",type:"mcq",q:"'This new track slaps.'",options:["is violent","is really good","is too loud","is old"],answer:1,ex:"'slaps' = is excellent (esp. music)."},
+
+  {id:"v1",cat:"vocab",lvl:"B2",type:"mcq",q:"Most FORMAL word for 'tired':",options:["beat","wiped out","fatigued","pooped"],answer:2,ex:"'fatigued' is formal; the rest informal."},
+  {id:"v2",cat:"vocab",lvl:"B2",type:"mcq",q:"Noun form of 'decide':",options:["decidement","decision","deciding","decisature"],answer:1,ex:"decide → decision. decisive (adj)."},
+  {id:"v3",cat:"vocab",lvl:"C1",type:"mcq",q:"Adjective from 'persuade':",options:["persuative","persuasive","persuadable","persuasing"],answer:1,ex:"persuade → persuasion → persuasive."},
+  {id:"v4",cat:"vocab",lvl:"C1",type:"mcq",q:"Which has a NEGATIVE connotation?",options:["slim","slender","skinny","fit"],answer:2,ex:"'skinny' is often negative; 'slim/slender' positive."},
+  {id:"v5",cat:"vocab",lvl:"B2",type:"gap",q:"Make it negative: 'honest' → ___honest (prefix only)",accept:["dis"],answer:"dis",ex:"'dishonest'. Prefix 'dis-'."},
+  {id:"v6",cat:"vocab",lvl:"C2",type:"mcq",q:"Most precise for 'a small, unimportant amount':",options:["a lot","a great deal","a negligible amount","plenty"],answer:2,ex:"'negligible' = so small it can be ignored."},
+  {id:"v7",cat:"vocab",lvl:"C1",type:"mcq",q:"Verb form of 'wide':",options:["wideize","widen","wideify","enwide"],answer:1,ex:"wide → widen (-en makes verbs: strengthen, soften)."},
+
+  {id:"r1",cat:"pron",lvl:"B1",type:"listen",say:"water",q:"Listen. In American English the 't' here sounds like…",options:["a hard T","a soft D (flap)","silent","a Z"],answer:1,ex:"American flap T: water → 'wa-der'. Same in better, city."},
+  {id:"r2",cat:"pron",lvl:"B2",type:"listen",say:"sheep",q:"Which word did you hear?",options:["ship","sheep","shape","shop"],answer:1,ex:"sheep /iː/ (long) vs ship /ɪ/ (short)."},
+  {id:"r3",cat:"pron",lvl:"B2",type:"mcq",q:"Where is the stress in 'photograph'?",options:["PHO-to-graph","pho-TO-graph","pho-to-GRAPH","all equal"],answer:0,ex:"PHO-to-graph. But photoGRAPHy shifts the stress."},
+  {id:"r4",cat:"pron",lvl:"C1",type:"mcq",q:"The /θ/ sound (think) is made by…",options:["tongue behind teeth, voiced","tongue between teeth, voiceless","lips together","back of throat"],answer:1,ex:"/θ/ = tongue between teeth, no voice. /ð/ = voiced (this)."},
+  {id:"r5",cat:"pron",lvl:"B2",type:"listen",say:"comfortable",q:"How many syllables do Americans usually say?",options:["4 (com-for-ta-ble)","3 (comf-ter-ble)","2","5"],answer:1,ex:"Reduced to ~3: 'KUMF-ter-bul'. Reduction is normal."},
+  {id:"r6",cat:"pron",lvl:"C1",type:"mcq",q:"'an apple' is naturally linked as…",options:["an. apple","a-napple","ann-apple","an-naple"],answer:1,ex:"Linking: consonant glides into the next vowel."},
+  {id:"r7",cat:"pron",lvl:"B2",type:"listen",say:"thirty",q:"Mind the /θ/ and the flap. Which did you hear?",options:["dirty","thirty","forty","thirsty"],answer:1,ex:"thirty /ˈθɜːrɾi/ — /θ/ start, flapped t."},
+
+  {id:"a1",cat:"adv",lvl:"C1",type:"mcq",q:"___ had I sat down when the phone rang.",options:["No sooner","Not sooner","Hardly never","No more"],answer:0,ex:"'No sooner had I… than…' — inversion for immediacy."},
+  {id:"a2",cat:"adv",lvl:"C1",type:"order",q:"Build an emphatic inversion:",tokens:["Never","have","I","seen","such","a","mess"],ex:"Negative adverb first → invert: 'Never have I seen…'."},
+  {id:"a3",cat:"adv",lvl:"C1",type:"mcq",q:"Cleft for focus: '___ I really want is some peace.'",options:["That","What","Which","It"],answer:1,ex:"'What I want is…' — a wh-cleft focuses the object."},
+  {id:"a4",cat:"adv",lvl:"C1",type:"gap",q:'Report it: "I\'ll call you tomorrow," she said. → She said she ___ call me the next day.',accept:["would","'d"],answer:"would",ex:"Backshift: will → would."},
+  {id:"a5",cat:"adv",lvl:"C2",type:"mcq",q:"Subjunctive: The board insists that he ___ present.",options:["is","be","was","being"],answer:1,ex:"After 'insist/demand/suggest (that)' → bare base: 'that he be present'."},
+  {id:"a6",cat:"adv",lvl:"C2",type:"gap",q:"Unreal past: It's time we ___ (leave).",accept:["left"],answer:"left",ex:"'It's time + subject + past form': 'It's time we left'."},
+  {id:"a7",cat:"adv",lvl:"C2",type:"mcq",q:"Not only ___ late, but he also forgot the keys.",options:["he was","was he","he is","is he"],answer:1,ex:"'Not only' fronted → inversion: 'Not only was he late…'."}
+];
+
+/* ====================== STORAGE SHIM ====================== */
+const KEY = "fluentlab:v2:state";
+const NB_KEY = "fluentlab:notebook";      // notebook stored on its own so a state reset can't take it
+const NB_BAK = "fluentlab:notebook:bak";  // rolling backup of the last non-empty notebook
+const hasWS = (typeof window !== "undefined" && window.storage && typeof window.storage.get === "function");
+const _mem = {};
+const Store = {
+  async get(k){
+    if(hasWS){ try{ const r = await window.storage.get(k); if(r && r.value!=null) return r.value; }catch(e){} }
+    try{ const v = localStorage.getItem(k); if(v!=null) return v; }catch(e){}
+    return (k in _mem) ? _mem[k] : null;
+  },
+  async set(k,v){
+    // Best-effort write to EVERY backend available, so notes survive backend changes.
+    if(hasWS){ try{ await window.storage.set(k, v, false); }catch(e){} }
+    try{ localStorage.setItem(k,v); }catch(e){}
+    _mem[k]=v;
+  }
+};
+// Read a key from any backend; returns the stored string (even "") or null if absent everywhere.
+async function readKey(k){
+  let val = null;
+  if(hasWS){ try{ const r = await window.storage.get(k); if(r && typeof r.value==="string") val = r.value; }catch(e){} }
+  if(val===null){ try{ const v = localStorage.getItem(k); if(typeof v==="string") val = v; }catch(e){} }
+  if(val===null && typeof _mem[k]==="string") val = _mem[k];
+  return val;
+}
+function saveNotebook(){
+  const text = state.notebook || "";
+  Store.set(NB_KEY, text);
+  if(text.trim()) Store.set(NB_BAK, text); // only back up real content, never an empty wipe
+}
+// Recover the notebook: honor a stored value (even an intentional empty); only fall back
+// to legacy state or the backup when nothing is stored yet (e.g. a fresh copy of the app).
+async function loadNotebookResilient(){
+  const nbVal = await readKey(NB_KEY);
+  const legacy = (state && typeof state.notebook==="string") ? state.notebook : "";
+  if(nbVal !== null){
+    state.notebook = (legacy.trim().length > nbVal.trim().length) ? legacy : nbVal;
+  } else {
+    let best = legacy;
+    const bak = await readKey(NB_BAK);
+    if(bak && bak.trim().length > best.trim().length) best = bak;
+    state.notebook = best || "";
+  }
+  if(state.notebook && state.notebook.trim()) saveNotebook();
+}
+
+/* ====================== STATE ====================== */
+const DAY = 86400000;
+const SRS_INTERVALS = [0, 1, 2, 4, 8, 16, 32]; // days per box 0..6
+const SESSION_SIZE = 10;
+const LV_RANK = {B1:1, B2:2, C1:3, C2:4};
+
+let state = null;
+function freshState(){
+  return { v:2, xp:0, streak:0, lastDay:null, theme:"light", level:"all",
+           srs:{}, totals:{seen:0, correct:0}, log:[], words:[], showES:false, notes:[], notebook:"", recent:[] };
+}
+async function loadState(){
+  const raw = await Store.get(KEY);
+  if(raw){ try{ state = Object.assign(freshState(), JSON.parse(raw)); }catch(e){ state = freshState(); } }
+  else state = freshState();
+}
+let _saveTimer=null;
+function save(){ clearTimeout(_saveTimer); _saveTimer=setTimeout(()=>Store.set(KEY, JSON.stringify(state)), 120); }
+
+function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
+function level(){ return 1 + Math.floor(state.xp/200); }
+function xpInLevel(){ return state.xp % 200; }
+
+/* ====================== HELPERS ====================== */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function catById(id){ return CATS.find(c=>c.id===id); }
+function norm(s){ return (s||"").toLowerCase().trim().replace(/\s+/g," ").replace(/^['"]|['"]$/g,"").replace(/[.,!?;]+$/,""); }
+
+function speak(text){
+  try{
+    if(!("speechSynthesis" in window)){ return false; }
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US"; u.rate = 0.9;
+    const vs = window.speechSynthesis.getVoices();
+    const v = vs.find(x=>/en[-_]US/i.test(x.lang)) || vs.find(x=>/^en/i.test(x.lang));
+    if(v) u.voice = v;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+    return true;
+  }catch(e){ return false; }
+}
+if("speechSynthesis" in window){ window.speechSynthesis.onvoiceschanged = ()=>{}; }
+
+/* ====================== SESSION BUILD (SRS) ====================== */
+function dueOf(id){ const s=state.srs[id]; return s ? s.due : 0; }
+
+/* Curated vocabulary bank — used to generate fresh exercises endlessly.
+   Everything here is real and correct; the generator only recombines it. */
+const VOCAB_RAW = {
+  phrasal: [
+    ["bring up","to mention a topic","B1"],["call off","to cancel something","B1"],["carry on","to continue","B1"],
+    ["come across","to find by chance, or to seem a certain way","B2"],["cut down on","to reduce","B2"],
+    ["get along","to have a good relationship","B1"],["give away","to give for free, or to reveal","B2"],
+    ["hold on","to wait","B1"],["look after","to take care of","B1"],["look into","to investigate","B2"],
+    ["pass out","to faint","B2"],["pull over","to stop a vehicle at the side of the road","B2"],
+    ["put off","to postpone","B1"],["run into","to meet someone by chance","B2"],["set up","to arrange or start something","B1"],
+    ["turn down","to reject, or to lower the volume","B2"],["work out","to exercise, or to solve something","B1"],
+    ["back up","to support, or to make a copy","B2"],["break down","to stop working, or to lose emotional control","B2"],
+    ["show up","to arrive or appear","B1"]
+  ],
+  idioms: [
+    ["a blessing in disguise","something good that seemed bad at first","B2"],["once in a blue moon","very rarely","B2"],
+    ["the last straw","the final problem that makes you react","B2"],["spill the beans","to reveal a secret","B2"],
+    ["bite the bullet","to face something difficult bravely","B2"],["hit the nail on the head","to be exactly right","B2"],
+    ["cost an arm and a leg","to be very expensive","B1"],["pull someone's leg","to joke or tease someone","B2"],
+    ["get cold feet","to become nervous before a big event","B2"],["the ball is in your court","it is your decision now","C1"],
+    ["beat around the bush","to avoid getting to the point","B2"],["call it a day","to stop working for now","B1"],
+    ["under the weather","feeling slightly ill","B1"],["a piece of cake","very easy","B1"],
+    ["break a leg","good luck (said to a performer)","B2"],["cut to the chase","to get to the point","B2"]
+  ],
+  colloc: [
+    ["make a decision","to decide","B1"],["take a risk","to do something with possible danger","B1"],
+    ["pay attention","to focus and listen carefully","B1"],["keep a promise","to do what you said you would","B1"],
+    ["meet a deadline","to finish something in time","B2"],["draw a conclusion","to reach a judgment","B2"],
+    ["save time","to use time efficiently","B1"],["catch a cold","to become ill with a cold","B1"],
+    ["break the news","to tell someone important news","B2"],["run a business","to manage a company","B2"],
+    ["take a break","to rest briefly","B1"],["heavy rain","strong, intense rain","B1"],
+    ["strong coffee","concentrated, intense coffee","B1"],["bear in mind","to remember or consider something","C1"],
+    ["make progress","to advance or improve","B1"],["do the dishes","to wash the plates and cutlery","B1"]
+  ],
+  slang: [
+    ["lit","exciting or excellent","B2"],["no cap","no lie, for real","B2"],["to ghost someone","to disappear and stop replying","B2"],
+    ["to flex","to show off","B2"],["salty","bitter or annoyed","B2"],["chill","relaxed, or to relax","B1"],
+    ["a vibe","a mood or atmosphere","B2"],["shook","shocked or surprised","B2"],["low-key","quietly or somewhat","C1"],
+    ["savage","brutally honest or fierce","B2"],["to bail","to leave suddenly","B2"],["hyped","very excited","B1"],
+    ["beat","exhausted","B1"],["my bad","my mistake","B1"],["it slaps","it is really good","B2"],["sus","suspicious","B2"]
+  ],
+  vocab: [
+    ["thrive","to grow or do very well","B2"],["reluctant","unwilling or hesitant","B2"],["meticulous","very careful about detail","C1"],
+    ["candid","honest and direct","C1"],["resilient","able to recover quickly","B2"],["ambiguous","open to more than one meaning","C1"],
+    ["inevitable","certain to happen","B2"],["tedious","boring and long","B2"],["versatile","able to adapt to many uses","B2"],
+    ["diligent","hard-working and careful","B2"],["concise","short and clear","B2"],["spontaneous","done without planning","B2"],
+    ["exhausted","extremely tired","B1"],["furious","extremely angry","B1"],["delighted","very pleased","B1"],
+    ["enormous","very large","B1"],["scarce","not enough, hard to find","C1"],["blunt","very direct, even rude","C1"]
+  ],
+  phrases: [
+    ["hang on","wait a moment","B1"],["never mind","it does not matter, forget it","B1"],["fair enough","okay, that is reasonable","B2"],
+    ["no worries","it is fine, do not worry","B1"],["that makes sense","I understand and agree","B1"],
+    ["let me think","asking for a moment to consider","B1"],["I should get going","a polite way to say you are leaving","B1"],
+    ["could you repeat that","asking someone to say it again","B1"],["it is up to you","you decide","B1"],
+    ["I am not sure about that","expressing polite doubt","B2"]
+  ]
+};
+const VOCAB_BANK = [];
+Object.keys(VOCAB_RAW).forEach(cat => VOCAB_RAW[cat].forEach(([term,meaning,lvl]) => VOCAB_BANK.push({term, meaning, cat, lvl:lvl||"B2"})));
+// Higher-level supplement (C1 / C2) so those levels always have material.
+const VOCAB_SUPP = [
+  ["come to terms with","to accept something difficult","phrasal","C1"],
+  ["get the hang of","to learn how to do something","phrasal","C1"],
+  ["weigh up","to consider carefully before deciding","phrasal","C1"],
+  ["mundane","ordinary and dull","vocab","C1"],
+  ["coherent","logical and consistent","vocab","C1"],
+  ["meticulous","very careful about detail","vocab","C1"],
+  ["candid","honest and direct","vocab","C1"],
+  ["ubiquitous","present or found everywhere","vocab","C2"],
+  ["pragmatic","practical, focused on results rather than theory","vocab","C2"],
+  ["nuanced","having subtle distinctions","vocab","C2"],
+  ["inadvertently","by accident, without intending to","vocab","C2"],
+  ["cumbersome","large and awkward to use or carry","vocab","C2"],
+  ["arbitrary","based on whim rather than reason","vocab","C2"],
+  ["redundant","no longer needed, or repeated unnecessarily","vocab","C2"],
+  ["compelling","convincing and holding your attention","vocab","C2"],
+  ["inherent","existing as a natural, permanent part of something","vocab","C2"],
+  ["prevalent","common and widespread","vocab","C2"],
+  ["a foregone conclusion","a result that is obvious before it happens","idioms","C2"],
+  ["to throw in the towel","to give up","idioms","C2"],
+  ["to jump on the bandwagon","to join something only because it is popular","idioms","C2"],
+  ["the elephant in the room","an obvious problem no one wants to discuss","idioms","C2"],
+  ["to play devil's advocate","to argue an opposing view just to test the idea","idioms","C2"],
+  ["pose a threat","to be a danger","colloc","C2"],
+  ["a vested interest","a personal stake in an outcome","colloc","C2"],
+  ["take something for granted","to fail to appreciate something","colloc","C2"],
+  ["a steep learning curve","a skill that is hard to learn quickly","colloc","C2"],
+  ["meet expectations","to be as good as people hoped","colloc","B2"]
+];
+VOCAB_SUPP.forEach(([term,meaning,cat,lvl]) => VOCAB_BANK.push({term, meaning, cat, lvl}));
+// Larger expansion so generated practice has far more variety before anything recurs.
+const VOCAB_SUPP2 = [
+  ["account for","to explain something","phrasal","C1"],["back down","to withdraw a demand or claim","phrasal","B2"],
+  ["bring about","to cause something to happen","phrasal","C1"],["catch up","to reach the same level as others","phrasal","B1"],
+  ["count on","to rely on someone","phrasal","B1"],["drop off","to deliver; or to fall asleep","phrasal","B1"],
+  ["end up","to finally be in a situation","phrasal","B2"],["fill in","to complete a form; or to substitute","phrasal","B1"],
+  ["get away with","to escape punishment","phrasal","B2"],["give in","to surrender or stop resisting","phrasal","B2"],
+  ["go over","to review or check","phrasal","B1"],["keep up with","to stay at the same pace","phrasal","B2"],
+  ["look up to","to admire someone","phrasal","B2"],["make up","to invent; or to reconcile","phrasal","B2"],
+  ["point out","to indicate or mention","phrasal","B1"],["rule out","to exclude a possibility","phrasal","C1"],
+  ["sort out","to resolve or organize","phrasal","B1"],["take over","to take control of","phrasal","B2"],
+  ["turn up","to appear; or to increase","phrasal","B1"],["wear out","to exhaust; or to use up","phrasal","B2"],
+  ["to ring a bell","to sound familiar","idioms","B2"],["to be on the fence","to be undecided","idioms","B2"],
+  ["to hit the road","to leave, to start a journey","idioms","B1"],["to keep an eye on","to watch or supervise","idioms","B1"],
+  ["to make ends meet","to manage financially","idioms","B2"],["to be in the same boat","to share a difficult situation","idioms","B2"],
+  ["to let the cat out of the bag","to reveal a secret by accident","idioms","B2"],["to go the extra mile","to make extra effort","idioms","B2"],
+  ["to add fuel to the fire","to make a bad situation worse","idioms","C1"],["to read between the lines","to find a hidden meaning","idioms","C1"],
+  ["to take it with a grain of salt","to be skeptical about something","idioms","C1"],["to bend over backwards","to try very hard to help","idioms","C1"],
+  ["make an effort","to try hard","colloc","B1"],["take responsibility","to accept being in charge of something","colloc","B2"],
+  ["raise awareness","to make people more conscious of an issue","colloc","B2"],["reach an agreement","to settle on terms","colloc","B2"],
+  ["set a goal","to decide on an objective","colloc","B1"],["gain experience","to build skill over time","colloc","B1"],
+  ["waste time","to use time badly","colloc","B1"],["pay a compliment","to say something nice to someone","colloc","B2"],
+  ["keep in touch","to stay in contact","colloc","B1"],["make sense of","to manage to understand","colloc","B2"],
+  ["take into account","to consider when deciding","colloc","B2"],["come to a decision","to decide","colloc","B2"],
+  ["to be down","to be willing to do something","slang","B2"],["chill out","to relax","slang","B1"],
+  ["to crash","to sleep; or to fail suddenly","slang","B2"],["to nail it","to do something perfectly","slang","B2"],
+  ["to spill the tea","to share gossip","slang","B2"],["to be broke","to have no money","slang","B1"],
+  ["hang in there","stay strong, don't give up","slang","B1"],["to wing it","to improvise without preparation","slang","B2"],
+  ["a deal-breaker","something that ruins an agreement","slang","C1"],["to be hooked","to be addicted or very interested","slang","B2"],
+  ["generous","willing to give and share","vocab","B1"],["stubborn","unwilling to change one's mind","vocab","B2"],
+  ["curious","eager to learn or know","vocab","B1"],["confident","sure of oneself","vocab","B1"],
+  ["anxious","worried or nervous","vocab","B2"],["grateful","thankful","vocab","B1"],
+  ["overwhelmed","feeling unable to cope","vocab","B2"],["straightforward","simple and clear","vocab","B2"],
+  ["thorough","complete and careful","vocab","C1"],["feasible","possible to do","vocab","C1"],
+  ["substantial","large in amount or importance","vocab","C1"],["subtle","not obvious, delicate","vocab","C1"],
+  ["profound","very deep or intense","vocab","C1"],["relentless","never stopping or weakening","vocab","C2"],
+  ["intricate","very detailed and complex","vocab","C2"],["to be honest","used to introduce a frank opinion","phrases","B1"],
+  ["on the other hand","used to introduce a contrast","phrases","B2"],["as far as I know","expressing limited certainty","phrases","B2"],
+  ["to sum up","used to conclude","phrases","B2"],["by the way","used to introduce a side topic","phrases","B1"],
+  ["in a nutshell","in brief, summarizing","phrases","B2"],["come to think of it","on reflection","phrases","B2"],
+  ["speaking of which","introducing a related point","phrases","C1"]
+];
+VOCAB_SUPP2.forEach(([term,meaning,cat,lvl]) => VOCAB_BANK.push({term, meaning, cat, lvl}));
+// Big content expansion — more examples across every category and level.
+const VOCAB_SUPP3 = [
+  // phrasal verbs
+  ["carry out","to perform or complete a task","phrasal","B2"],["set off","to start a journey; or to trigger","phrasal","B2"],
+  ["put up","to accommodate someone; or to build","phrasal","B2"],["take after","to resemble an older relative","phrasal","B2"],
+  ["get over","to recover from something","phrasal","B2"],["bring back","to return; or to revive a memory","phrasal","B1"],
+  ["call back","to return a phone call","phrasal","B1"],["look forward to","to anticipate with pleasure","phrasal","B1"],
+  ["run out","to be completely used up","phrasal","B1"],["give up","to quit or stop trying","phrasal","B1"],
+  ["turn off","to switch off; or to disgust","phrasal","B1"],["turn on","to switch on","phrasal","B1"],
+  ["pick up","to collect; or to learn casually","phrasal","B1"],["drop out","to quit a course or school","phrasal","B2"],
+  ["break up","to end a relationship","phrasal","B1"],["grow up","to become an adult","phrasal","B1"],
+  ["fall apart","to break into pieces; or to collapse emotionally","phrasal","B2"],["hold up","to delay; or to rob","phrasal","B2"],
+  ["stand out","to be clearly noticeable","phrasal","B2"],["come up","to arise, said of a topic or problem","phrasal","B2"],
+  ["get by","to manage with difficulty","phrasal","B2"],["put together","to assemble","phrasal","B1"],
+  ["take up","to start a hobby; or to occupy time or space","phrasal","B2"],["back off","to retreat or stop pressuring","phrasal","B2"],
+  // idioms
+  ["to cost a fortune","to be very expensive","idioms","B2"],["to be over the moon","to be extremely happy","idioms","B2"],
+  ["to feel blue","to feel sad","idioms","B1"],["to be snowed under","to be overwhelmed with work","idioms","C1"],
+  ["to have a lot on your plate","to be very busy","idioms","B2"],["to be in hot water","to be in trouble","idioms","B2"],
+  ["to learn the ropes","to learn how something works","idioms","B2"],["to be back to square one","to have to start over","idioms","B2"],
+  ["to cut corners","to do something cheaply or carelessly to save time","idioms","C1"],["to be on cloud nine","to be extremely happy","idioms","B2"],
+  ["to face the music","to accept the consequences","idioms","B2"],["to give the benefit of the doubt","to trust despite uncertainty","idioms","C1"],
+  ["the tip of the iceberg","a small visible part of a much bigger problem","idioms","C1"],["to play it by ear","to improvise as you go","idioms","B2"],
+  ["to be up in the air","to be undecided or uncertain","idioms","B2"],["to be in someone's shoes","to be in their situation","idioms","B2"],
+  ["to keep your fingers crossed","to hope for good luck","idioms","B1"],["to break the bank","to be too expensive","idioms","B2"],
+  ["to be a long shot","to be unlikely to succeed","idioms","C1"],["to call the shots","to be the one in control","idioms","C1"],
+  ["to be down to earth","to be practical and modest","idioms","B2"],["to get the ball rolling","to start something","idioms","B2"],
+  // collocations
+  ["take a photo","to photograph something","colloc","B1"],["make a mistake","to do something wrong","colloc","B1"],
+  ["do homework","to complete assigned study","colloc","B1"],["have a shower","to wash in the shower","colloc","B1"],
+  ["make a noise","to be noisy","colloc","B1"],["pay the bill","to settle a charge","colloc","B1"],
+  ["catch a bus","to take a bus in time","colloc","B1"],["tell the truth","to be honest","colloc","B1"],
+  ["keep a secret","to not reveal something","colloc","B1"],["break a record","to surpass a previous best","colloc","B2"],
+  ["make friends","to form friendships","colloc","B1"],["take notes","to write down key points","colloc","B1"],
+  ["give a speech","to address an audience","colloc","B2"],["ask a favor","to request help","colloc","B1"],
+  ["run late","to be behind schedule","colloc","B2"],["make a living","to earn enough to survive","colloc","B2"],
+  ["take a seat","to sit down","colloc","B1"],["do research","to investigate systematically","colloc","B2"],
+  ["make an appointment","to schedule a meeting","colloc","B1"],["pay in cash","to pay with physical money","colloc","B1"],
+  ["save money","to keep money for later","colloc","B1"],["spend time","to use time on something","colloc","B1"],
+  // slang
+  ["to be extra","to be over the top or dramatic","slang","B2"],["to be a vibe","to be appealing or in the right mood","slang","B2"],
+  ["to slay","to do something impressively well","slang","B2"],["gucci","good, fine, all set","slang","B2"],
+  ["to throw shade","to subtly insult or disrespect someone","slang","B2"],["to be on point","to be perfect or excellent","slang","B2"],
+  ["FOMO","fear of missing out","slang","B2"],["to be canceled","to be publicly rejected for bad behavior","slang","C1"],
+  ["to vibe with","to get along well with","slang","B2"],["a buzzkill","someone or something that ruins the fun","slang","C1"],
+  ["to be woke","to be socially and politically aware","slang","C1"],["to drag someone","to criticize someone harshly","slang","B2"],
+  ["shady","suspicious or dishonest","slang","B2"],["to bounce","to leave","slang","B2"],
+  ["legit","legitimate, genuine, real","slang","B1"],["props","respect or credit given to someone","slang","B2"],
+  ["to be pumped","to be very excited","slang","B1"],["to be all ears","to be ready and eager to listen","slang","B2"],
+  // vocabulary
+  ["humble","modest, not arrogant","vocab","B2"],["arrogant","having an exaggerated sense of self-importance","vocab","B2"],
+  ["sincere","genuine and honest","vocab","B2"],["cautious","careful to avoid danger","vocab","B2"],
+  ["efficient","working well without wasting resources","vocab","B2"],["reliable","dependable, able to be trusted","vocab","B2"],
+  ["vague","unclear or imprecise","vocab","B2"],["abundant","present in large quantities","vocab","C1"],
+  ["fragile","easily broken","vocab","B2"],["temporary","lasting only a short time","vocab","B1"],
+  ["permanent","lasting forever or for a long time","vocab","B1"],["crucial","extremely important","vocab","B2"],
+  ["minor","small or unimportant","vocab","B1"],["significant","important or notable","vocab","B2"],
+  ["apparent","clearly visible or obvious","vocab","C1"],["eager","keen and enthusiastic","vocab","B2"],
+  ["weary","very tired","vocab","C1"],["content","satisfied and at ease","vocab","B2"],
+  ["frustrated","annoyed at being unable to do something","vocab","B2"],["astonishing","extremely surprising","vocab","B2"],
+  ["dreadful","very bad or unpleasant","vocab","B2"],["remarkable","worthy of attention, impressive","vocab","B2"],
+  ["adequate","enough, sufficient","vocab","B2"],["obsolete","no longer used, outdated","vocab","C1"],
+  ["tentative","not certain, provisional","vocab","C1"],["diverse","varied, of many kinds","vocab","B2"],
+  ["robust","strong and healthy or sturdy","vocab","C1"],["elaborate","detailed and complicated","vocab","C1"],
+  ["trivial","of little importance","vocab","C1"],["ambivalent","having mixed feelings","vocab","C2"],
+  ["discreet","careful not to attract attention","vocab","C1"],["eloquent","fluent and persuasive in speech","vocab","C1"],
+  ["formidable","inspiring fear or respect through size or strength","vocab","C2"],["optimistic","expecting good outcomes","vocab","B2"],
+  ["pessimistic","expecting bad outcomes","vocab","B2"],["genuine","real, authentic","vocab","B2"],
+  ["hostile","unfriendly, aggressive","vocab","C1"],["cheerful","happy and positive","vocab","B1"],
+  ["sensible","practical and reasonable","vocab","B2"],["sensitive","easily affected emotionally; or delicate","vocab","B2"],
+  // everyday phrases
+  ["it depends","the answer varies with the situation","phrases","B1"],["I see what you mean","I understand your point","phrases","B1"],
+  ["that's a good point","acknowledging a valid argument","phrases","B1"],["let me get back to you","I'll respond later","phrases","B2"],
+  ["to cut a long story short","to summarize quickly","phrases","B2"],["as a matter of fact","in reality, actually","phrases","B2"],
+  ["if you ask me","giving a personal opinion","phrases","B1"],["the thing is","introducing a key issue","phrases","B2"],
+  ["to put it simply","to explain plainly","phrases","B2"],["not to mention","in addition to","phrases","B2"],
+  ["at the end of the day","ultimately, when all is considered","phrases","B2"],["give or take","approximately","phrases","C1"],
+  ["sooner or later","eventually","phrases","B1"],["for the time being","for now","phrases","B2"],
+  ["once in a while","occasionally","phrases","B1"]
+];
+VOCAB_SUPP3.forEach(([term,meaning,cat,lvl]) => VOCAB_BANK.push({term, meaning, cat, lvl}));
+const VOCAB_SUPP4 = [
+  // more phrasal verbs
+  ["figure out","to understand or solve","phrasal","B2"],["get rid of","to remove or dispose of","phrasal","B2"],
+  ["look out","to be careful, to watch for danger","phrasal","B1"],["run away","to escape, to flee","phrasal","B1"],
+  ["set aside","to reserve for later","phrasal","B2"],["sign up","to register or enrol","phrasal","B1"],
+  ["throw away","to discard","phrasal","B1"],["work on","to make an effort to improve something","phrasal","B1"],
+  ["calm down","to become less upset","phrasal","B1"],["check out","to look at; or to leave a hotel","phrasal","B1"],
+  ["hand in","to submit","phrasal","B1"],["hang out","to spend time relaxing","phrasal","B1"],
+  // more idioms
+  ["to hit the sack","to go to bed","idioms","B2"],["to kill two birds with one stone","to solve two problems at once","idioms","B2"],
+  ["to be the apple of someone's eye","to be deeply cherished","idioms","C1"],["to be in over your head","to be in a situation too difficult to handle","idioms","C1"],
+  ["to take a rain check","to politely postpone an invitation","idioms","C1"],["to be on the same page","to share the same understanding","idioms","B2"],
+  ["to get something off your chest","to share a worry to feel better","idioms","B2"],["to be a wake-up call","an event that forces you to change","idioms","C1"],
+  ["to be water under the bridge","a past problem no longer worth worrying about","idioms","C1"],["to throw someone under the bus","to betray someone for your own benefit","idioms","C1"],
+  ["the best of both worlds","the advantages of two different things at once","idioms","B2"],["to cross that bridge when you come to it","to deal with a problem only when it arises","idioms","C1"],
+  // more collocations
+  ["make a difference","to have a noticeable effect","colloc","B2"],["take action","to do something about a problem","colloc","B2"],
+  ["reach a conclusion","to decide after thinking","colloc","B2"],["set an example","to behave so others can copy","colloc","B2"],
+  ["break a habit","to stop a repeated behavior","colloc","B2"],["do a favor","to help someone","colloc","B1"],
+  ["have an impact","to produce an effect","colloc","B2"],["make an exception","to not apply the usual rule","colloc","B2"],
+  ["take a chance","to take a risk","colloc","B2"],["give an example","to illustrate with a case","colloc","B1"],
+  // more slang / informal
+  ["no biggie","no problem, not important","slang","B1"],["bet","okay, agreed, sounds good","slang","B2"],
+  ["to bail on","to abandon plans or someone","slang","B2"],["to glow up","to transform in a positive way","slang","B2"],
+  ["to be swamped","to be extremely busy","slang","B2"],["to be on a roll","to have a streak of success","slang","B2"],
+  ["to give a heads-up","to warn or inform in advance","slang","B2"],["to call it quits","to stop or give up","slang","B2"],
+  // more vocabulary
+  ["brave","showing courage","vocab","B1"],["wise","having good judgment","vocab","B2"],
+  ["foolish","showing poor judgment","vocab","B2"],["loyal","faithful and reliable","vocab","B2"],
+  ["greedy","wanting more than one needs","vocab","B2"],["polite","showing good manners","vocab","B1"],
+  ["rude","impolite, ill-mannered","vocab","B1"],["calm","peaceful, not agitated","vocab","B1"],
+  ["nervous","worried or anxious","vocab","B1"],["witty","cleverly amusing","vocab","C1"],
+  ["gloomy","dark and depressing","vocab","C1"],["vivid","bright and clear, very detailed","vocab","C1"],
+  ["fierce","aggressive or intense","vocab","C1"],["gentle","mild and kind","vocab","B1"],
+  ["harsh","severe or unkind","vocab","B2"],
+  // more everyday phrases
+  ["first of all","used to introduce the first point","phrases","B1"],["in other words","used to rephrase more clearly","phrases","B2"],
+  ["for instance","for example","phrases","B1"],["as a result","consequently","phrases","B2"],
+  ["on second thought","reconsidering a decision","phrases","B2"],["to be fair","acknowledging the other side","phrases","B2"],
+  ["that said","despite what was just stated","phrases","C1"],["the bottom line is","the most important point is","phrases","B2"]
+];
+VOCAB_SUPP4.forEach(([term,meaning,cat,lvl]) => VOCAB_BANK.push({term, meaning, cat, lvl}));
+
+/* Curated grammar/pronunciation exercise bank — full, correct MCQs the generator
+   serves (with options shuffled) so the grammar modules also get fresh practice. */
+const GRAM_BANK = [
+  // ---- tenses ----
+  {cat:"tenses",lvl:"B2",q:"She ___ here since 2015.",options:["has lived","lives","lived","is living"],answer:0,ex:"'since' + unfinished time → present perfect."},
+  {cat:"tenses",lvl:"B1",q:"While I ___, the phone rang.",options:["was cooking","cooked","have cooked","cook"],answer:0,ex:"Background action → past continuous."},
+  {cat:"tenses",lvl:"C1",q:"By next year, I ___ here for a decade.",options:["will have worked","will work","work","have worked"],answer:0,ex:"Finished before a future point → future perfect."},
+  {cat:"tenses",lvl:"B1",q:"I ___ that movie three times already.",options:["have seen","saw","see","had seen"],answer:0,ex:"'already' + experience → present perfect."},
+  {cat:"tenses",lvl:"B2",q:"When I arrived, they ___ already left.",options:["had","have","has","were"],answer:0,ex:"Earlier past → past perfect 'had left'."},
+  {cat:"tenses",lvl:"B1",q:"Water ___ at 100 degrees Celsius.",options:["boils","is boiling","boiled","has boiled"],answer:0,ex:"General truth → present simple."},
+  {cat:"tenses",lvl:"B1",q:"Look at those clouds — it ___.",options:["is going to rain","rains","rained","has rained"],answer:0,ex:"Present evidence → 'going to'."},
+  {cat:"tenses",lvl:"C1",q:"This time tomorrow I ___ on a beach.",options:["will be lying","will lie","lie","have lain"],answer:0,ex:"In progress at a future time → future continuous."},
+  {cat:"tenses",lvl:"B2",q:"I ___ my keys; I can't get in.",options:["have lost","lost","lose","had lost"],answer:0,ex:"Past action, present result → present perfect."},
+  {cat:"tenses",lvl:"B2",q:"He said he ___ tired.",options:["was","is","has been","will be"],answer:0,ex:"Reported speech backshift: is → was."},
+  {cat:"tenses",lvl:"C1",q:"I'd rather you ___ now.",options:["left","leave","leaves","will leave"],answer:0,ex:"'would rather' + past for a present preference."},
+  {cat:"tenses",lvl:"C2",q:"Hardly ___ when it started to rain.",options:["had we arrived","we had arrived","we arrived","did we arrive"],answer:0,ex:"Inversion after 'hardly'."},
+  // ---- conditionals ----
+  {cat:"cond",lvl:"B1",q:"If it ___ tomorrow, we'll cancel.",options:["rains","will rain","rained","would rain"],answer:0,ex:"First conditional: if + present, will + base."},
+  {cat:"cond",lvl:"B2",q:"If I ___ you, I'd apologize.",options:["were","was","am","be"],answer:0,ex:"Second conditional: 'were' for all persons."},
+  {cat:"cond",lvl:"B2",q:"If she had studied, she ___ the exam.",options:["would have passed","would pass","passed","will pass"],answer:0,ex:"Third conditional: would have + past participle."},
+  {cat:"cond",lvl:"B1",q:"If you heat ice, it ___.",options:["melts","will melt","melted","would melt"],answer:0,ex:"Zero conditional: present + present."},
+  {cat:"cond",lvl:"C2",q:"___ I known, I would have helped.",options:["Had","If","Have","Should"],answer:0,ex:"Inverted third conditional: 'Had I known…'."},
+  {cat:"cond",lvl:"B2",q:"I wish I ___ more time.",options:["had","have","will have","would have"],answer:0,ex:"'wish' + past for a present regret."},
+  {cat:"cond",lvl:"C1",q:"If I had left earlier, I ___ here now.",options:["would be","would have been","will be","am"],answer:0,ex:"Mixed conditional: past condition, present result."},
+  {cat:"cond",lvl:"C2",q:"___ you need help, just call.",options:["Should","Would","Had","If"],answer:0,ex:"Formal inversion: 'Should you need…'."},
+  {cat:"cond",lvl:"C1",q:"I wish you ___ that noise.",options:["would stop","stopped","stop","will stop"],answer:0,ex:"'wish + would' for annoyance."},
+  // ---- advanced structures ----
+  {cat:"adv",lvl:"C1",q:"Not only ___ late, but he also forgot the keys.",options:["was he","he was","he is","did he"],answer:0,ex:"Inversion after 'not only'."},
+  {cat:"adv",lvl:"C1",q:"___ I seen such a mess.",options:["Never have","Never I have","I never have","Have never"],answer:0,ex:"Negative adverb first → inversion."},
+  {cat:"adv",lvl:"C1",q:"It ___ John who broke it.",options:["was","is being","has","did"],answer:0,ex:"Cleft sentence for focus: 'It was John who…'."},
+  {cat:"adv",lvl:"B2",q:"___ I need is a break.",options:["What","That","Which","It"],answer:0,ex:"Cleft with 'What…': 'What I need is…'."},
+  {cat:"adv",lvl:"C2",q:"Rarely ___ such talent.",options:["do we see","we see","we do see","see we"],answer:0,ex:"Inversion after 'rarely'."},
+  {cat:"adv",lvl:"C2",q:"It's essential that he ___ on time.",options:["be","is","was","will be"],answer:0,ex:"Subjunctive after 'essential that': base form 'be'."},
+  {cat:"adv",lvl:"C1",q:"I suggest that she ___ early.",options:["arrive","arrives","arrived","will arrive"],answer:0,ex:"Subjunctive: base form after 'suggest that'."},
+  {cat:"adv",lvl:"C2",q:"No sooner ___ than it rang.",options:["had I sat down","I had sat down","I sat down","did I sit"],answer:0,ex:"'No sooner… than' + inversion."},
+  {cat:"adv",lvl:"C2",q:"Only after the meeting ___ the truth.",options:["did we learn","we learned","we did learn","learned we"],answer:0,ex:"Inversion after 'only after'."},
+  // ---- pronunciation ----
+  {cat:"pron",lvl:"B1",q:"Which word has the /iː/ sound (long ee)?",options:["sheep","ship","shape","shop"],answer:0,ex:"'sheep' = /iː/; 'ship' = short /ɪ/."},
+  {cat:"pron",lvl:"B2",q:"Where is the stress in 'photograph'?",options:["PHO-to-graph","pho-TO-graph","pho-to-GRAPH","none"],answer:0,ex:"'PHOtograph' stresses the first syllable."},
+  {cat:"pron",lvl:"B2",q:"In American English, the 't' in 'water' sounds most like a:",options:["soft d (flap)","hard t","silent t","th"],answer:0,ex:"Flap T: 'water' → 'wadder'."},
+  {cat:"pron",lvl:"B2",q:"Which word rhymes with 'though'?",options:["go","cow","cough","tough"],answer:0,ex:"'though' /oʊ/ rhymes with 'go'."},
+  {cat:"pron",lvl:"C1",q:"The 'ough' in 'enough' sounds like:",options:["uff","oh","ow","aw"],answer:0,ex:"'enough' → /ɪˈnʌf/, like 'uff'."},
+  {cat:"pron",lvl:"B2",q:"Which word has the voiceless /θ/ sound?",options:["think","this","those","then"],answer:0,ex:"'think' is voiceless /θ/; the others are voiced /ð/."},
+  {cat:"pron",lvl:"B2",q:"Where is the stress in 'develop'?",options:["de-VEL-op","DE-vel-op","de-vel-OP","none"],answer:0,ex:"'deVELop' stresses the middle syllable."},
+  {cat:"pron",lvl:"C1",q:"Which word starts with the schwa /ə/?",options:["about","apple","army","angle"],answer:0,ex:"'about' → /əˈbaʊt/, unstressed schwa."}
+];
+// Grammar expansion — more tenses, conditionals, advanced structures and pronunciation items.
+GRAM_BANK.push(
+  {cat:"tenses",lvl:"B1",q:"I usually ___ coffee in the morning.",options:["drink","am drinking","drank","have drunk"],answer:0,ex:"Habit → present simple."},
+  {cat:"tenses",lvl:"B1",q:"Right now she ___ a book.",options:["is reading","reads","read","has read"],answer:0,ex:"Happening now → present continuous."},
+  {cat:"tenses",lvl:"B2",q:"They ___ here for ten years before they moved.",options:["had lived","lived","have lived","live"],answer:0,ex:"Earlier-than-past duration → past perfect."},
+  {cat:"tenses",lvl:"C1",q:"By the time you read this, I ___.",options:["will have left","leave","will leave","have left"],answer:0,ex:"Completed before a future point → future perfect."},
+  {cat:"tenses",lvl:"B1",q:"He ___ TV when I called.",options:["was watching","watched","has watched","watches"],answer:0,ex:"Action in progress in the past → past continuous."},
+  {cat:"tenses",lvl:"B2",q:"This is the first time I ___ sushi.",options:["have eaten","eat","ate","had eaten"],answer:0,ex:"'the first time' + present perfect."},
+  {cat:"tenses",lvl:"B2",q:"I ___ here for three hours; I'm exhausted.",options:["have been waiting","wait","waited","am waiting"],answer:0,ex:"Duration up to now → present perfect continuous."},
+  {cat:"tenses",lvl:"B1",q:"Look! The bus ___.",options:["is coming","comes","came","has come"],answer:0,ex:"Happening at this moment → present continuous."},
+  {cat:"tenses",lvl:"C1",q:"By 2030, technology ___ enormously.",options:["will have changed","will change","changes","has changed"],answer:0,ex:"Finished before a future date → future perfect."},
+  {cat:"tenses",lvl:"B2",q:"I ___ to her since the argument.",options:["haven't spoken","didn't speak","don't speak","am not speaking"],answer:0,ex:"'since' + present perfect for unfinished time."},
+  {cat:"cond",lvl:"B2",q:"If I had known earlier, I ___ differently.",options:["would have acted","would act","acted","will act"],answer:0,ex:"Third conditional: would have + past participle."},
+  {cat:"cond",lvl:"B2",q:"She would travel more if she ___ the money.",options:["had","has","would have","will have"],answer:0,ex:"Second conditional: past form in the if-clause."},
+  {cat:"cond",lvl:"B2",q:"Unless you hurry, you ___ the train.",options:["will miss","miss","would miss","missed"],answer:0,ex:"'unless' + present, will + base."},
+  {cat:"cond",lvl:"C1",q:"If only I ___ listened to you!",options:["had","have","would","did"],answer:0,ex:"'If only' + past perfect for past regret."},
+  {cat:"cond",lvl:"B2",q:"Provided that he ___, we'll start.",options:["agrees","agreed","will agree","agreeing"],answer:0,ex:"'provided that' + present simple."},
+  {cat:"cond",lvl:"C2",q:"Were it not for your help, I ___ failed.",options:["would have","will have","had","would"],answer:0,ex:"Formal inversion: 'Were it not for… I would have failed.'"},
+  {cat:"cond",lvl:"B1",q:"If water ___ below zero, it freezes.",options:["drops","will drop","dropped","would drop"],answer:0,ex:"Zero conditional: present + present."},
+  {cat:"cond",lvl:"B2",q:"I'd help you if I ___ time, but I don't.",options:["had","have","had had","would have"],answer:0,ex:"Second conditional: 'if I had time'."},
+  {cat:"adv",lvl:"C2",q:"Seldom ___ such dedication.",options:["have I seen","I have seen","I saw","did I saw"],answer:0,ex:"Inversion after 'seldom'."},
+  {cat:"adv",lvl:"C2",q:"Little ___ that he was lying.",options:["did she know","she knew","she did know","knew she"],answer:0,ex:"Inversion after fronted 'little'."},
+  {cat:"adv",lvl:"B2",q:"It was in Paris ___ they met.",options:["that","which","where","who"],answer:0,ex:"Cleft: 'It was in Paris that…'."},
+  {cat:"adv",lvl:"C2",q:"Under no circumstances ___ the door.",options:["should you open","you should open","you open","open you"],answer:0,ex:"Inversion after 'under no circumstances'."},
+  {cat:"adv",lvl:"C2",q:"___ his anger that he stormed out.",options:["Such was","So was","It was","Was such"],answer:0,ex:"Emphatic 'Such was his anger that…'."},
+  {cat:"adv",lvl:"B2",q:"What surprised me ___ his honesty.",options:["was","were","is being","had"],answer:0,ex:"Cleft with 'What…': singular 'was'."},
+  {cat:"adv",lvl:"C2",q:"Not until midnight ___ home.",options:["did they go","they went","they did go","went they"],answer:0,ex:"Inversion after 'not until…'."},
+  {cat:"pron",lvl:"B1",q:"Which word has a silent letter?",options:["knee","tree","green","seen"],answer:0,ex:"'knee' has a silent 'k'."},
+  {cat:"pron",lvl:"B2",q:"How many syllables does 'comfortable' have in US English?",options:["3","4","2","5"],answer:0,ex:"Usually 3: 'KUMF-ter-bul'."},
+  {cat:"pron",lvl:"B1",q:"Which word has the /æ/ sound (as in 'cat')?",options:["man","mean","moon","mine"],answer:0,ex:"'man' = /æ/."},
+  {cat:"pron",lvl:"B2",q:"The plural ending in 'dogs' sounds like:",options:["z","s","iz","t"],answer:0,ex:"After a voiced sound, the -s is /z/."},
+  {cat:"pron",lvl:"B2",q:"The '-ed' in 'wanted' is pronounced:",options:["id","t","d","silent"],answer:0,ex:"After t/d, '-ed' = /ɪd/."},
+  {cat:"pron",lvl:"B1",q:"Which word has the /ʃ/ (sh) sound?",options:["sure","sin","see","zoo"],answer:0,ex:"'sure' starts with /ʃ/."},
+  {cat:"pron",lvl:"C1",q:"Where is the stress in 'economic'?",options:["e-co-NO-mic","E-co-no-mic","e-CO-no-mic","e-co-no-MIC"],answer:0,ex:"'ecoNOMic' stresses the third syllable."},
+  {cat:"pron",lvl:"C1",q:"Which word contains a diphthong (two vowel sounds)?",options:["boy","bit","bet","bat"],answer:0,ex:"'boy' = /ɔɪ/, a diphthong."}
+);
+function gramPool(catFilter, ignoreLevel){
+  let pool = GRAM_BANK.filter(g => catFilter ? g.cat===catFilter : true);
+  if(!ignoreLevel && state.level!=="all"){ pool = pool.filter(g => g.lvl===state.level); }
+  return pool;
+}
+function genGrammar(catFilter, used){
+  let pool = gramPool(catFilter);
+  if(pool.length < 1) pool = gramPool(null);
+  if(pool.length < 1) return null;
+  const fresh = pool.filter(g => !used.has(g.q));
+  const base = fresh.length ? fresh : pool;
+  const g = base[Math.floor(Math.random()*base.length)];
+  used.add(g.q);
+  const correct = g.options[g.answer];
+  const opts = shuffle(g.options);
+  return { id:"gen-"+Math.random().toString(36).slice(2,9), cat:g.cat, lvl:g.lvl, type:"mcq",
+           q:g.q, options:opts, answer:opts.indexOf(correct), ex:g.ex, _gen:true, _key:"g:"+g.q };
+}
+// Unified generator: draws from vocabulary and grammar banks for the given scope.
+function genItem(catFilter, used){
+  const vOK = (catFilter ? vocabPool(catFilter).length : vocabPool(null).length) >= 1;
+  const gOK = (catFilter ? gramPool(catFilter).length : gramPool(null).length) >= 1;
+  if(vOK && gOK) return Math.random()<0.5 ? (genVocab(catFilter,used)||genGrammar(catFilter,used)) : (genGrammar(catFilter,used)||genVocab(catFilter,used));
+  if(vOK) return genVocab(catFilter, used);
+  if(gOK) return genGrammar(catFilter, used);
+  return null;
+}
+
+function vocabPool(catFilter, ignoreLevel){
+  let pool = VOCAB_BANK.filter(v => catFilter ? v.cat===catFilter : true);
+  if(!ignoreLevel && state.level!=="all"){ pool = pool.filter(v => v.lvl===state.level); }
+  return pool;
+}
+// Generate one fresh multiple-choice exercise from the curated vocabulary bank.
+function genVocab(catFilter, used){
+  let pool = vocabPool(catFilter);              // target: exact level + category
+  if(pool.length < 1) pool = vocabPool(null);   // exact level, any category
+  if(pool.length < 1) return null;              // nothing at this level
+  const fresh = pool.filter(v => !used.has(v.term));
+  const base = fresh.length ? fresh : pool;
+  const item = base[Math.floor(Math.random()*base.length)];
+  used.add(item.term);
+  let dPool = VOCAB_BANK.filter(v => v.term!==item.term); // distractors: any level
+  const reverse = Math.random() < 0.5;
+  let q, correctVal, distract;
+  if(!reverse){
+    q = `What does “${item.term}” mean?`;
+    correctVal = item.meaning;
+    distract = shuffle(dPool).map(v=>v.meaning).filter(v=>v!==correctVal).slice(0,3);
+  } else {
+    q = `Which one means: “${item.meaning}”?`;
+    correctVal = item.term;
+    distract = shuffle(dPool).map(v=>v.term).filter(v=>v!==correctVal).slice(0,3);
+  }
+  const options = shuffle([correctVal, ...distract]);
+  return { id:"gen-"+Math.random().toString(36).slice(2,9), cat:item.cat, lvl:item.lvl, type:"mcq",
+           q, options, answer:options.indexOf(correctVal), ex:`“${item.term}” = ${item.meaning}.`, _gen:true, _key:"v:"+item.term };
+}
+
+function sigOf(it){ return it._gen ? (it._key || ("g:"+it.q)) : ("c:"+it.id); }
+
+function buildSession(catFilter){
+  const base = BANK.filter(it => catFilter ? it.cat===catFilter : true);
+  let pool = base;
+  if(state.level!=="all"){
+    const exact = base.filter(it => it.lvl===state.level);
+    pool = exact.length ? exact : (catFilter ? base : exact);
+  }
+  // "recent" remembers the signatures shown in the last ~10 sessions, so every click
+  // brings exercises you have NOT just seen. After about 10 rounds the oldest ones
+  // fall out of the queue and can come back, mixed with new ones.
+  const RECENT_MAX = SESSION_SIZE * 10;
+  if(!Array.isArray(state.recent)) state.recent = [];
+  const recent = new Set(state.recent);
+
+  const sel = [], usedSig = new Set(), usedGen = new Set();
+  const take = (it)=>{ const s=sigOf(it); if(usedSig.has(s)) return false; sel.push(it); usedSig.add(s); return true; };
+
+  // 1) A few curated items the user hasn't recently seen (keeps the "real lessons" in rotation)
+  const curatedCap = SESSION_SIZE - 6; // up to 4 curated, at least 6 generated
+  for(const it of shuffle(pool)){
+    if(sel.length >= curatedCap) break;
+    if(!recent.has("c:"+it.id)) take(it);
+  }
+  // 2) Fill the rest with freshly generated items whose signature is NOT in recent
+  let guard = 0;
+  while(sel.length < SESSION_SIZE && guard < 600){
+    guard++;
+    const g = genItem(catFilter, usedGen);
+    if(!g) break;
+    if(recent.has(sigOf(g))) continue; // skip anything seen in the last ~10 rounds
+    take(g);
+  }
+  // 3) Pool of fresh material exhausted (small level/topic, or past ~10 rounds):
+  //    allow previously seen items back, mixing review with new.
+  if(sel.length < SESSION_SIZE){
+    for(const it of shuffle(pool)){ if(sel.length>=SESSION_SIZE) break; take(it); }
+  }
+  if(sel.length < SESSION_SIZE){
+    let g2 = 0;
+    while(sel.length < SESSION_SIZE && g2 < 600){ g2++; const g = genItem(catFilter, new Set()); if(!g) break; take(g); }
+  }
+  if(sel.length === 0){ shuffle(base.length?base:BANK).slice(0,SESSION_SIZE).forEach(take); }
+
+  const out = shuffle(sel).slice(0, SESSION_SIZE);
+  // Record what we showed, keeping only the last ~10 rounds of signatures.
+  state.recent = state.recent.concat(out.map(sigOf)).slice(-RECENT_MAX);
+  save();
+  return out;
+}
+function applySRS(id, correct){
+  const now = Date.now();
+  let s = state.srs[id] || {box:0, due:now, seen:0, correct:0};
+  s.seen++; if(correct) s.correct++;
+  s.box = correct ? Math.min(6, s.box+1) : 1;
+  s.due = now + SRS_INTERVALS[s.box]*DAY;
+  state.srs[id]=s;
+  state.totals.seen++; if(correct) state.totals.correct++;
+}
+function dueCount(){
+  const now=Date.now(); let n=0;
+  for(const it of BANK){ if(state.level!=="all" && it.lvl!==state.level) continue;
+    const s=state.srs[it.id]; if(!s || s.due<=now) n++; }
+  return n;
+}
+
+/* ====================== NAV ====================== */
+function showScreen(id){
+  $$(".screen").forEach(s=>s.classList.remove("active"));
+  $("#scr-"+id).classList.add("active");
+  window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
+  $$(".tab").forEach(t=>t.setAttribute("aria-pressed", String(t.dataset.go===id)));
+  if(id==="stats") renderStats();
+  if(id==="dict") renderDict();
+  if(id==="notes") renderNotes();
+  if(id==="home") renderHome();
+  updateResumeBar(id);
+}
+
+/* ====================== HOME ====================== */
+function renderHome(){
+  $("#hdrStreak").textContent = state.streak;
+  $("#hdrLevel").textContent = level();
+  const d = dueCount();
+  $("#dueNote").textContent = d>0 ? (d + " item" + (d===1?"":"s") + " ready to review right now.") : "All caught up — this session brings fresh material.";
+  $$("#levelChips .lv").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.lv===state.level)));
+  const grid = $("#catGrid"); grid.innerHTML="";
+  for(const c of CATS){
+    const items = BANK.filter(x=>x.cat===c.id);
+    const seen = items.filter(x=>state.srs[x.id]).length;
+    const mast = items.filter(x=>state.srs[x.id] && state.srs[x.id].box>=5).length;
+    const seenPct = Math.round(100*(seen-mast)/items.length);
+    const mastPct = Math.round(100*mast/items.length);
+    const el = document.createElement("button");
+    el.className="cat"; el.setAttribute("aria-label","Open "+c.name);
+    el.innerHTML = `<div class="ic">${c.icon}</div><h4>${c.name}</h4><p>${c.blurb}</p>
+      <div class="bar"><i class="seen" style="width:${seenPct}%"></i><i class="mast" style="width:${mastPct}%"></i></div>
+      <div class="meta"><span>${items.length} items</span><span>${mast} mastered</span></div>`;
+    el.addEventListener("click", ()=>openCat(c.id));
+    grid.appendChild(el);
+  }
+}
+
+/* ====================== CATEGORY / THEORY ====================== */
+let currentCat = null;
+function openCat(id){
+  currentCat = id;
+  const c = catById(id);
+  $("#catTitle").textContent = c.icon+" "+c.name;
+  $("#catBlurb").textContent = c.blurb;
+  const body = $("#theoryBody"); body.innerHTML="";
+  (THEORY[id]||[]).forEach(t=>{
+    const div=document.createElement("div"); div.className="card t-block";
+    div.innerHTML = `<h4>${t.title}</h4>${t.html}`;
+    body.appendChild(div);
+  });
+  makeTappable(body);
+  showScreen("cat");
+}
+
+/* ====================== QUIZ ====================== */
+let session = null; // {items, idx, answers:[{item,correct,given}]}
+let answered = false, currentAnswer = null;
+let quizActive = false;
+
+function updateResumeBar(activeScreen){
+  const bar = $("#resumeBar");
+  if(!bar) return;
+  const show = quizActive && session && activeScreen!=="quiz" && activeScreen!=="res";
+  bar.classList.toggle("show", show);
+  if(show){
+    const info = $("#resumeInfo");
+    if(info) info.textContent = " (" + Math.min(session.idx+1, session.items.length) + "/" + session.items.length + ")";
+  }
+}
+
+function startSession(catFilter, title){
+  const items = buildSession(catFilter);
+  session = { items, idx:0, answers:[], cat:catFilter };
+  quizActive = true;
+  showScreen("quiz");
+  renderQuestion();
+}
+function renderQuestion(){
+  answered=false; currentAnswer=null;
+  const it = session.items[session.idx];
+  const c = catById(it.cat);
+  $("#qCat").innerHTML = `${c.icon} ${c.name} · <span class="pill">${it.lvl}</span>`;
+  $("#progBar").style.width = Math.round(100*session.idx/session.items.length)+"%";
+  $("#qCount").textContent = (session.idx+1)+" / "+session.items.length;
+  $("#qFeedback").innerHTML="";
+  const btn = $("#qBtn"); btn.textContent="Check"; btn.disabled=true; btn.onclick=onCheck;
+
+  const prompt = $("#qPrompt"); const body=$("#qBody"); body.innerHTML="";
+  prompt.innerHTML = it.q.replace(/___+/g,'<u style="text-decoration-style:dotted">____</u>');
+  makeTappable(prompt);
+
+  if(it.type==="mcq" || it.type==="listen"){
+    if(it.type==="listen"){
+      const sp=document.createElement("button"); sp.className="speak"; sp.type="button";
+      sp.innerHTML="🔊 Play the audio";
+      sp.onclick=()=>{ if(!speak(it.say)) sp.innerHTML="🔇 Audio not available — read: \""+it.say+"\""; };
+      body.appendChild(sp);
+      const hint=document.createElement("p"); hint.className="muted"; hint.style.fontSize=".82rem"; hint.style.margin="8px 0 0";
+      hint.textContent="Tap play (you can replay), then choose.";
+      body.appendChild(hint);
+      setTimeout(()=>speak(it.say), 350);
+    }
+    const opts=document.createElement("div"); opts.className="opts"; opts.style.marginTop="12px";
+    it.options.forEach((o,i)=>{
+      const b=document.createElement("button"); b.className="opt"; b.type="button"; b.textContent=o;
+      b.onclick=()=>{ if(answered) return; currentAnswer=i;
+        opts.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed","false"));
+        b.setAttribute("aria-pressed","true"); $("#qBtn").disabled=false; };
+      opts.appendChild(b);
+    });
+    body.appendChild(opts);
+  }
+  else if(it.type==="gap"){
+    const inp=document.createElement("input"); inp.className="gap-in"; inp.type="text";
+    inp.placeholder="Type your answer…"; inp.autocomplete="off"; inp.autocapitalize="off"; inp.spellcheck=false;
+    inp.oninput=()=>{ currentAnswer=inp.value; $("#qBtn").disabled = inp.value.trim()==="" ; };
+    inp.onkeydown=(e)=>{ if(e.key==="Enter" && !$("#qBtn").disabled){ e.preventDefault(); $("#qBtn").click(); } };
+    body.appendChild(inp); setTimeout(()=>inp.focus(),100);
+  }
+  else if(it.type==="order"){
+    const build=document.createElement("div"); build.className="build";
+    const bank=document.createElement("div"); bank.className="bank";
+    const order=[];
+    const tokens = shuffle(it.tokens.map((t,i)=>({t,i})));
+    function refresh(){ currentAnswer = order.map(o=>o.t); $("#qBtn").disabled = order.length!==it.tokens.length; }
+    tokens.forEach(tok=>{
+      const b=document.createElement("button"); b.className="tok"; b.type="button"; b.textContent=tok.t;
+      b.onclick=()=>{ if(answered) return; b.classList.add("used"); order.push(tok);
+        const chip=document.createElement("button"); chip.className="tok"; chip.type="button"; chip.textContent=tok.t;
+        chip.onclick=()=>{ if(answered) return; const k=order.indexOf(tok); if(k>-1)order.splice(k,1); b.classList.remove("used"); chip.remove(); refresh(); };
+        build.appendChild(chip); refresh(); };
+      bank.appendChild(b);
+    });
+    body.appendChild(build); body.appendChild(bank);
+  }
+}
+
+function correctText(it){
+  if(it.type==="mcq"||it.type==="listen") return it.options[it.answer];
+  if(it.type==="gap") return it.answer;
+  if(it.type==="order") return it.tokens.join(" ");
+}
+function isCorrect(it, given){
+  if(it.type==="mcq"||it.type==="listen") return given===it.answer;
+  if(it.type==="gap"){ const g=norm(given); return it.accept.some(a=>norm(a)===g); }
+  if(it.type==="order"){ return Array.isArray(given) && given.join(" ")===it.tokens.join(" "); }
+  return false;
+}
+function givenText(it, given){
+  if(it.type==="mcq"||it.type==="listen") return (given==null)?"—":it.options[given];
+  if(it.type==="order") return Array.isArray(given)?given.join(" "):"—";
+  return given||"—";
+}
+
+function onCheck(){
+  if(answered){ next(); return; }
+  const it = session.items[session.idx];
+  const ok = isCorrect(it, currentAnswer);
+  answered=true;
+  if(it._gen){ state.totals.seen++; if(ok) state.totals.correct++; }
+  else applySRS(it.id, ok);
+  if(ok) state.xp += 10;
+  session.answers.push({item:it, correct:ok, given:currentAnswer});
+
+  // visual feedback for mcq
+  if(it.type==="mcq"||it.type==="listen"){
+    const opts=$("#qBody").querySelectorAll(".opt");
+    opts.forEach((b,i)=>{ b.style.pointerEvents="none";
+      if(i===it.answer) b.classList.add("correct");
+      if(i===currentAnswer && !ok) b.classList.add("wrong"); });
+  }
+  const fb=$("#qFeedback");
+  const speakBtn = (it.cat==="pron"||it.type==="listen")
+     ? `<button class="speak" type="button" style="margin-top:10px;padding:9px 14px;font-size:.9rem" onclick="window.__say('${(it.say||correctText(it)).replace(/'/g,"\\'")}')">🔊 Hear it again</button>` : "";
+  fb.innerHTML = `<div class="feedback ${ok?'ok':'no'}">
+      <b>${ok?'✓ Correct!':'✗ Not quite.'}</b>
+      ${ok?'':'<div class="ans">Answer: '+correctText(it)+'</div>'}
+      <div>${it.ex}</div>${speakBtn}</div>`;
+  makeTappable(fb);
+  const btn=$("#qBtn"); btn.disabled=false;
+  btn.textContent = (session.idx===session.items.length-1) ? "See results →" : "Next →";
+  $("#progBar").style.width = Math.round(100*(session.idx+1)/session.items.length)+"%";
+  save();
+}
+window.__say = (t)=>speak(t);
+
+function next(){
+  session.idx++;
+  if(session.idx < session.items.length) renderQuestion();
+  else finishSession();
+}
+function quitToHome(){ if(session && session.answers.length>0) save(); quizActive=false; showScreen("home"); }
+
+/* ====================== RESULTS ====================== */
+function finishSession(){
+  quizActive = false;
+  const total=session.answers.length;
+  const correct=session.answers.filter(a=>a.correct).length;
+  const pct = Math.round(100*correct/total);
+  // streak
+  const t=todayStr();
+  if(state.lastDay!==t){
+    const y=new Date(Date.now()-DAY); const ys=y.getFullYear()+"-"+(y.getMonth()+1)+"-"+y.getDate();
+    state.streak = (state.lastDay===ys) ? state.streak+1 : 1;
+    state.lastDay=t;
+  }
+  const xpGain = correct*10;
+  state.log.unshift({date:t, total, correct}); state.log=state.log.slice(0,30);
+  save();
+
+  // ring
+  const off = 264 - 264*(pct/100);
+  $("#ringFill").style.strokeDashoffset = off;
+  $("#ringFill").style.stroke = pct>=80?"var(--leaf)":pct>=50?"var(--teal)":"var(--coral)";
+  $("#ringNum").textContent = pct+"%";
+  $("#resTitle").textContent = pct>=90?"Outstanding!":pct>=70?"Strong work":pct>=50?"Good progress":"Keep at it";
+  $("#resSub").textContent = `${correct} of ${total} correct · 🔥 ${state.streak}-day streak`;
+  $("#resXp").textContent = `+${xpGain} XP earned · Level ${level()}`;
+
+  const list=$("#resList"); list.innerHTML="";
+  session.answers.forEach(a=>{
+    const it=a.item; const row=document.createElement("div"); row.className="res-line";
+    const correctHtml = a.correct ? "" : `<div><span class="muted" style="font-size:.84rem">Correct:</span> <span class="ans">${correctText(it)}</span></div>`;
+    const yourHtml = a.correct ? "" : `<div><span class="muted" style="font-size:.84rem">You:</span> ${givenText(it,a.given)}</div>`;
+    row.innerHTML = `<div class="mk ${a.correct?'ok':'no'}">${a.correct?'✓':'✗'}</div>
+      <div class="res-q"><div>${it.q.replace(/___+/g,'____')}</div>${correctHtml}${yourHtml}<div class="ex">${it.ex}</div></div>`;
+    list.appendChild(row);
+  });
+  makeTappable(list);
+  showScreen("res");
+}
+
+/* ====================== STATS ====================== */
+function renderStats(){
+  $("#stStreak").textContent = state.streak;
+  $("#stXp").textContent = state.xp;
+  $("#stLevel").textContent = level();
+  $("#stMast").textContent = Object.values(state.srs).filter(s=>s.box>=5).length;
+  const acc = state.totals.seen ? Math.round(100*state.totals.correct/state.totals.seen) : null;
+  $("#stAcc").textContent = acc==null ? "—" : acc+"%";
+  $("#totalAnswered").textContent = state.totals.seen ? (state.totals.seen+" answered") : "";
+  const bars=$("#masteryBars"); bars.innerHTML="";
+  for(const c of CATS){
+    const items=BANK.filter(x=>x.cat===c.id);
+    const seen=items.filter(x=>state.srs[x.id]).length;
+    const mast=items.filter(x=>state.srs[x.id]&&state.srs[x.id].box>=5).length;
+    const seenPct=Math.round(100*(seen-mast)/items.length), mastPct=Math.round(100*mast/items.length);
+    const row=document.createElement("div"); row.className="mbar";
+    row.innerHTML=`<div class="name">${c.icon} ${c.name}</div>
+      <div class="track"><i style="width:${seenPct}%;background:var(--teal)"></i><i style="width:${mastPct}%;background:var(--amber)"></i></div>
+      <div class="num">${mast}/${items.length}</div>`;
+    bars.appendChild(row);
+  }
+}
+
+/* ====================== THEME ====================== */
+function applyTheme(){ document.body.dataset.theme=state.theme; $("#themeBtn").textContent = state.theme==="dark"?"☀️":"🌙"; }
+function applyES(){
+  document.body.dataset.es = state.showES ? "on" : "off";
+  const b = $("#esToggle");
+  if(b){ b.setAttribute("aria-pressed", String(!!state.showES)); b.textContent = state.showES ? "🇪🇸 Spanish hints: on" : "🇪🇸 Spanish hints: off"; }
+}
+
+/* ====================== WIRE UP ====================== */
+/* ====================== DICTIONARY ====================== */
+const DICT_API = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+const TRANS_API = "https://api.mymemory.translated.net/get";
+const URBAN_API = "https://api.urbandictionary.com/v0/define";
+const _dictCache = {};
+let _dictDir = "en";   // "en" = English→Spanish, "es" = Spanish→English
+let _curKey = null;    // cache key currently shown in the sheet
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
+function jq(s){ return (s||"").replace(/\\/g,"\\\\").replace(/'/g,"\\'"); }
+
+function openSheet(html){
+  $("#sheetBody").innerHTML = html;
+  $("#sheetBg").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeSheet(){
+  $("#sheetBg").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+async function tryDict(term){
+  try{
+    const r = await fetch(DICT_API + encodeURIComponent(term));
+    if(!r.ok) return {ok:false, status:r.status};
+    const data = await r.json();
+    if(!Array.isArray(data) || !data[0]) return {ok:false, status:404};
+    const e = data[0];
+    let phon = e.phonetic || "", audio = "";
+    if(Array.isArray(e.phonetics)){
+      for(const p of e.phonetics){ if(!phon && p.text) phon = p.text; if(!audio && p.audio) audio = p.audio; }
+    }
+    if(audio && audio.startsWith("//")) audio = "https:" + audio;
+    const meanings = [];
+    for(const m of (e.meanings||[])){
+      const defs = (m.definitions||[]).slice(0,4).map(d=>({def:d.definition, ex:d.example||""}));
+      const syns = (m.synonyms||[]).slice(0,6);
+      const ants = (m.antonyms||[]).slice(0,6);
+      if(defs.length) meanings.push({pos:m.partOfSpeech||"", defs, syns, ants});
+      if(meanings.length>=5) break;
+    }
+    if(!meanings.length) return {ok:false, status:404};
+    return {ok:true, word:e.word||term, phon, audio, meanings, source:"Wiktionary"};
+  }catch(err){ return {ok:false, status:0}; }
+}
+
+async function fetchEnglish(word){
+  // 1) as typed — covers single words and many phrasal verbs / idioms that exist as lemmas
+  let r = await tryDict(word);
+  if(r.ok) return r;
+  let netErr = (r.status===0);
+  // 2) retry without a leading article (idioms are usually listed without "a / an / the")
+  const noArt = word.replace(/^(a|an|the)\s+/i,"");
+  if(noArt !== word){
+    const r2 = await tryDict(noArt);
+    if(r2.ok) return r2;
+    netErr = netErr && (r2.status===0);
+  }
+  return {ok:false, status: netErr ? 0 : 404};
+}
+
+function cleanUrban(s){ return (s||"").replace(/[\[\]]/g,"").replace(/\r/g,"").trim(); }
+
+async function fetchUrban(term){
+  try{
+    const r = await fetch(URBAN_API + "?term=" + encodeURIComponent(term));
+    if(!r.ok) return {ok:false, status:r.status};
+    const data = await r.json();
+    const list = (data && Array.isArray(data.list)) ? data.list : [];
+    if(!list.length) return {ok:false, status:404};
+    list.sort((a,b)=>(b.thumbs_up||0)-(a.thumbs_up||0));
+    const top = list[0];
+    let def = cleanUrban(top.definition);
+    if(def.length > 320) def = def.slice(0,320).replace(/\s+\S*$/,"") + "…";
+    let ex = cleanUrban(top.example);
+    if(ex.length > 200) ex = ex.slice(0,200).replace(/\s+\S*$/,"") + "…";
+    return {ok:true, word:top.word||term, phon:"", audio:"",
+      meanings:[{pos:"slang / informal", defs:[{def, ex}], syns:[]}],
+      source:"Urban Dictionary"};
+  }catch(err){ return {ok:false, status:0}; }
+}
+
+// Translate in either direction; returns an array of alternatives (best first) or null.
+async function translateMM(text, pair){
+  try{
+    const r = await fetch(TRANS_API + "?q=" + encodeURIComponent(text) + "&langpair=" + pair);
+    if(!r.ok) return null;
+    const data = await r.json();
+    const out = [], seen = new Set();
+    const bad = /^(mymemory|invalid|query length|please|no query)/i;
+    const push = (t)=>{
+      const v = (t||"").replace(/\s+/g," ").trim();
+      const k = v.toLowerCase();
+      if(!v || seen.has(k) || bad.test(k)) return;
+      seen.add(k); out.push(v);
+    };
+    if(data && data.responseData) push(data.responseData.translatedText);
+    if(Array.isArray(data && data.matches)){
+      data.matches.slice().sort((a,b)=>(b.match||0)-(a.match||0)).forEach(m=>{ if(out.length<5 && m && m.translation) push(m.translation); });
+    }
+    return out.length ? out : null;
+  }catch(err){ return null; }
+}
+
+window.__say = (t)=>speak(t);
+window.__closeSheet = ()=>closeSheet();
+window.__playAudio = (url, word)=>{
+  try{ const a = new Audio(url); a.play().catch(()=>speak(word)); }
+  catch(e){ speak(word); }
+};
+window.__toggleSave = (w)=>{
+  const key = (w||"").toLowerCase();
+  const i = state.words.findIndex(x=>x.w===key);
+  if(i>=0) state.words.splice(i,1);
+  else state.words.unshift({w:key, ts:Date.now()});
+  save();
+  if($("#sheetBg").classList.contains("open") && _curKey && _dictCache[_curKey]){
+    $("#sheetBody").innerHTML = renderEntry(_dictCache[_curKey]);
+  }
+  if($("#scr-dict").classList.contains("active")) renderDict();
+};
+
+function audioBtnHtml(word, audio){
+  if(audio) return `<button class="speak" type="button" onclick="window.__playAudio('${esc(audio)}','${esc(jq(word))}')">🔊 Hear it</button>`;
+  return `<button class="speak" type="button" onclick="window.__say('${esc(jq(word))}')">🔊 Hear it</button>`;
+}
+
+function enMeaningsHtml(en){
+  if(!(en && en.ok && en.meanings && en.meanings.length))
+    return `<div class="def-block muted">No dictionary or slang entry found for this exact form. Try the base form (e.g. “give up”, not “gave up”), or use the translation above.</div>`;
+  const isUrban = en.source === "Urban Dictionary";
+  let h = `<div class="src-tag">Source: ${esc(en.source||"dictionary")}${isUrban ? " · community-sourced slang, can be informal or crude" : ""}</div>`;
+  for(const m of en.meanings){
+    h += `<div class="def-block">`;
+    if(m.pos) h += `<span class="pos">${esc(m.pos)}</span>`;
+    m.defs.forEach(d=>{
+      h += `<div>${esc(d.def)}</div>`;
+      if(d.ex) h += `<div class="ex">“${esc(d.ex)}”</div>`;
+    });
+    if(m.syns && m.syns.length) h += `<div class="muted" style="font-size:.84rem;margin-top:5px">Synonyms: ${esc(m.syns.join(", "))}</div>`;
+    if(m.ants && m.ants.length) h += `<div class="muted" style="font-size:.84rem;margin-top:3px">Antonyms: ${esc(m.ants.join(", "))}</div>`;
+    h += `</div>`;
+  }
+  return h;
+}
+
+function saveBtnHtml(term){
+  const key = (term||"").toLowerCase();
+  const saved = state.words.some(x=>x.w===key);
+  return `<button class="btn btn-light" style="padding:9px 14px;font-size:.9rem" onclick="window.__toggleSave('${esc(jq(key))}')">${saved?"✓ Saved":"＋ Save word"}</button>`;
+}
+
+// English → Spanish
+function renderEN(word, en, esAlts){
+  const title = (en && en.ok) ? en.word : word;
+  let html = `<div class="lab" style="margin-top:0"><h3>${esc(title)}</h3></div>`;
+  if(en && en.ok && en.phon) html += `<div class="phon">${esc(en.phon)}</div>`;
+  html += `<div class="sheet-row">${audioBtnHtml(title, en&&en.ok?en.audio:"")}${saveBtnHtml(title)}</div>`;
+  html += enMeaningsHtml(en);
+  html += `<div class="es-box"><div class="lab">En español</div>`;
+  if(esAlts && esAlts.length){
+    html += `<div>${esc(esAlts[0])}</div>`;
+    if(esAlts.length>1) html += `<div class="muted" style="font-size:.86rem;margin-top:5px">También: ${esc(esAlts.slice(1,4).join(" · "))}</div>`;
+    html += `<div class="src">Traducción automática (MyMemory). Para frases hechas da el sentido aproximado, no siempre el equivalente idiomático.</div>`;
+  } else html += `<div class="muted">No se pudo traducir ahora. Revisá la conexión y probá de nuevo.</div>`;
+  html += `</div>`;
+  return html;
+}
+
+// Spanish → English
+function renderES(q, enCands, def){
+  let html = `<div class="lab" style="margin-top:0"><h3>${esc(q)}</h3></div>`;
+  html += `<div class="src-tag">Español → English</div>`;
+  if(enCands && enCands.length){
+    const main = enCands[0];
+    html += `<div class="def-block"><span class="pos">in English</span><div class="en" style="font-size:1.1rem">${esc(main)}</div>`;
+    if(enCands.length>1) html += `<div class="muted" style="font-size:.88rem;margin-top:5px">Also: ${esc(enCands.slice(1,5).join(" · "))}</div>`;
+    html += `</div>`;
+    html += `<div class="sheet-row">${audioBtnHtml(main, def&&def.ok?def.audio:"")}${saveBtnHtml(main)}</div>`;
+    if(def){
+      if(def.ok && def.phon) html += `<div class="phon" style="margin-top:10px">${esc(def.phon)}</div>`;
+      html += enMeaningsHtml(def);
+    }
+  } else {
+    html += `<div class="def-block muted">No se encontró traducción. Revisá la ortografía y probá de nuevo.</div>`;
+  }
+  return html;
+}
+
+function renderEntry(e){
+  return e.kind === "es" ? renderES(e.q, e.enCands, e.def) : renderEN(e.word, e.en, e.esAlts);
+}
+
+function loadingHtml(label){
+  return `<div class="lab" style="margin-top:0"><h3>${esc(label)}</h3></div><div class="dict-loading"><span class="spin"></span> Looking it up…</div>`;
+}
+function netErrHtml(label){
+  return `<div class="lab" style="margin-top:0"><h3>${esc(label)}</h3></div>
+    <div class="def-block">No pude conectarme a los servicios de diccionario. Esta función necesita conexión a internet. Probá de nuevo en un momento.</div>
+    <div class="sheet-row"><button class="btn btn-light" onclick="window.__closeSheet()">Close</button></div>`;
+}
+
+async function lookupWord(raw, forceDir){
+  const q = (raw||"").trim().replace(/\s+/g," ");
+  if(!q) return;
+  const dir = forceDir || _dictDir;
+  const cacheKey = dir + ":" + q.toLowerCase();
+  _curKey = cacheKey;
+  openSheet(loadingHtml(q));
+  if(_dictCache[cacheKey]){ openSheet(renderEntry(_dictCache[cacheKey])); return; }
+
+  if(dir === "es"){
+    // Spanish → English
+    const enCands = await translateMM(q, "es|en");
+    if(enCands === null){ openSheet(netErrHtml(q)); return; }
+    let def = null;
+    if(enCands.length){
+      const best = enCands[0].toLowerCase().replace(/[^a-z' -]/gi," ").replace(/\s+/g," ").trim();
+      if(best){
+        def = await fetchEnglish(best);
+        if(!def.ok){ const u = await fetchUrban(best); if(u.ok) def = u; }
+      }
+    }
+    const entry = {kind:"es", q, enCands, def};
+    _dictCache[cacheKey] = entry;
+    openSheet(renderEntry(entry));
+    return;
+  }
+
+  // English → Spanish
+  const word = q.toLowerCase().replace(/[^a-z' -]/gi," ").replace(/\s+/g," ").trim();
+  const esP = translateMM(word, "en|es");
+  let en = await fetchEnglish(word);
+  if(!en.ok){ const u = await fetchUrban(word); if(u.ok) en = u; }
+  const esAlts = await esP;
+  if(!en.ok && en.status===0 && esAlts===null){ openSheet(netErrHtml(q)); return; }
+  const entry = {kind:"en", word, en, esAlts};
+  _dictCache[cacheKey] = entry;
+  openSheet(renderEntry(entry));
+}
+
+function updateDictHint(){
+  const en = _dictDir === "en";
+  const hint = $("#dictHint"), inp = $("#dictInput");
+  if(hint) hint.textContent = en
+    ? "Type an English word or phrase. You get a full English definition with pronunciation, synonyms, antonyms and examples, plus the Spanish meaning."
+    : "Escribí una palabra o frase en español. Te da el equivalente en inglés y la definición completa en inglés.";
+  if(inp) inp.placeholder = en ? "Type a word, e.g. thrive" : "Escribí una palabra, ej. madrugar";
+  $$("#dirSwitch .dir-opt").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.dir===_dictDir)));
+}
+
+function renderDict(){
+  $("#savedCount").textContent = state.words.length ? state.words.length+" saved" : "";
+  const wrap = $("#savedWrap");
+  if(!state.words.length){
+    wrap.innerHTML = `<div class="dict-empty">No saved words yet. Look one up and tap “Save word”, or tap any underlined word while you study a topic.</div>`;
+    return;
+  }
+  wrap.innerHTML = "";
+  state.words.forEach(x=>{
+    const chip = document.createElement("span");
+    chip.className = "wchip";
+    chip.innerHTML = `<span class="wlbl">${esc(x.w)}</span><span class="x" role="button" aria-label="Remove ${esc(x.w)}">✕</span>`;
+    chip.addEventListener("click",(e)=>{
+      if(e.target.classList.contains("x")){ e.stopPropagation(); window.__toggleSave(x.w); }
+      else lookupWord(x.w, "en");
+    });
+    wrap.appendChild(chip);
+  });
+}
+
+/* Make alphabetic words tappable inside a rendered container — safe: only rewrites text nodes */
+function makeTappable(root){
+  if(!root) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      if(!n.nodeValue || !/[A-Za-z]{3,}/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+      const p = n.parentNode; if(!p) return NodeFilter.FILTER_REJECT;
+      const tag = p.nodeName.toLowerCase();
+      if(tag==="button" || tag==="code" || (p.classList && p.classList.contains("wtap"))) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const targets = []; let node;
+  while((node = walker.nextNode())) targets.push(node);
+  for(const t of targets){
+    const frag = document.createDocumentFragment();
+    const parts = t.nodeValue.split(/([A-Za-z][A-Za-z'-]{2,})/);
+    for(const part of parts){
+      if(/^[A-Za-z][A-Za-z'-]{2,}$/.test(part)){
+        const s = document.createElement("span"); s.className = "wtap"; s.textContent = part;
+        frag.appendChild(s);
+      } else {
+        frag.appendChild(document.createTextNode(part));
+      }
+    }
+    t.parentNode.replaceChild(frag, t);
+  }
+  if(!root.__wtapBound){
+    root.addEventListener("click",(e)=>{
+      const el = e.target.closest(".wtap");
+      if(el) lookupWord(el.textContent, "en");
+    });
+    root.__wtapBound = true;
+  }
+}
+
+/* ====================== NOTEBOOK (continuous page) ====================== */
+function fmtDate(ts){
+  try{ return new Date(ts).toLocaleDateString(undefined,{day:"2-digit",month:"short",year:"numeric"}); }
+  catch(e){ return ""; }
+}
+let _nbTimer = null;
+
+// One-time migration: fold any older structured/free notes into the continuous page.
+function migrateNotes(){
+  if(state.notebook===undefined) state.notebook = "";
+  if(!state.notebook && Array.isArray(state.notes) && state.notes.length){
+    const lines = state.notes.slice().sort((a,b)=>a.ts-b.ts).map(n=>{
+      if(n.word!==undefined || n.meaning!==undefined || n.example!==undefined){
+        let s = n.word||"";
+        if(n.meaning) s += (s?" \u2014 ":"") + n.meaning;
+        if(n.example) s += "  (e.g. " + n.example + ")";
+        const extra = [n.obs1, n.obs2].filter(Boolean).join("; ");
+        if(extra) s += "  [" + extra + "]";
+        if(n.source) s += "  \u00b7" + n.source;
+        return s;
+      }
+      return (n.text||"") + (n.source ? ("  \u00b7"+n.source) : "");
+    }).filter(Boolean);
+    state.notebook = lines.join("\n");
+    state.notes = [];
+  }
+}
+
+function renderNotes(){
+  const ta = $("#notebook");
+  if(ta && ta.value !== (state.notebook||"")) ta.value = state.notebook || "";
+  const len = (state.notebook||"").trim().length;
+  $("#notesCount").textContent = len ? (len + (len===1?" char":" chars")) : "";
+}
+
+function nbInput(){
+  state.notebook = $("#notebook").value;
+  const tag = $("#nbSaved"); if(tag) tag.textContent = "Saving\u2026";
+  const len = (state.notebook||"").trim().length;
+  $("#notesCount").textContent = len ? (len + " chars") : "";
+  clearTimeout(_nbTimer);
+  _nbTimer = setTimeout(()=>{ save(); saveNotebook(); if(tag){ tag.textContent="Saved \u2713"; setTimeout(()=>{ if(tag) tag.textContent=""; }, 1200); } }, 400);
+}
+
+/* ---- Exports (no libraries, work offline) ---- */
+function downloadFile(filename, mime, content){
+  try{
+    const blob = new Blob([content], {type:mime});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 800);
+    return true;
+  }catch(e){ return false; }
+}
+function nbText(){ return (state.notebook||"").replace(/\r\n/g,"\n"); }
+function exportWord(){
+  const body = esc(nbText()).replace(/\n/g,"<br>") || "(empty)";
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>My Notebook</title></head>` +
+    `<body style="font-family:Arial,sans-serif;font-size:11pt;color:#14202A;line-height:1.6">` +
+    `<h1 style="color:#14202A">My Notebook</h1>` +
+    `<p style="color:#5C6B72">Exported from Fluent Lab \u00b7 ${esc(fmtDate(Date.now()))}</p><hr><p>${body}</p></body></html>`;
+  downloadFile("my-notebook.doc", "application/msword", html);
+}
+function exportTXT(){ downloadFile("my-notebook.txt", "text/plain;charset=utf-8", nbText()); }
+async function copyAll(){
+  const text = nbText();
+  let ok = false;
+  try{ if(navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(text); ok = true; } }catch(e){}
+  if(!ok){
+    try{
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      ok = document.execCommand("copy"); document.body.removeChild(ta);
+    }catch(e){}
+  }
+  const btn = $("#copyAll"), old = btn.textContent;
+  btn.textContent = ok ? "\u2713 Copied" : "Copy failed";
+  setTimeout(()=>{ btn.textContent = old; }, 1600);
+}
+function importNotebook(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    let txt = String(reader.result||"");
+    // If a .doc/HTML export is imported, strip tags down to readable text.
+    if(/<\/?[a-z][\s\S]*>/i.test(txt)){
+      txt = txt.replace(/<br\s*\/?>/gi,"\n").replace(/<\/p>/gi,"\n").replace(/<[^>]+>/g,"")
+               .replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'");
+    }
+    txt = txt.replace(/\r\n/g,"\n").trim();
+    if(!txt){ return; }
+    const cur = (state.notebook||"").trim();
+    // Append imported text so nothing currently written is ever lost.
+    state.notebook = cur ? (cur + "\n\n— imported " + fmtDate(Date.now()) + " —\n" + txt) : txt;
+    const ta = $("#notebook"); if(ta) ta.value = state.notebook;
+    renderNotes(); save(); saveNotebook();
+    const tag = $("#nbSaved"); if(tag){ tag.textContent="Imported \u2713"; setTimeout(()=>{ if(tag) tag.textContent=""; }, 1600); }
+  };
+  reader.readAsText(file);
+}
+function clearNotebook(){
+  if(!(state.notebook||"").trim()){ return; }
+  if(!confirm("Clear the whole notebook on this device? This stays cleared. If you exported a copy (Text or Word), you can Import it later to restore.")) return;
+  state.notebook = "";
+  const ta = $("#notebook"); if(ta) ta.value = "";
+  renderNotes(); save();
+  Store.set(NB_KEY, ""); Store.set(NB_BAK, ""); // explicit delete clears the backup too
+  const tag = $("#nbSaved"); if(tag){ tag.textContent="Cleared"; setTimeout(()=>{ if(tag) tag.textContent=""; }, 1600); }
+}
+
+function wire(){
+  $("#startDaily").addEventListener("click", ()=>startSession(null));
+  $("#practiceCat").addEventListener("click", ()=>startSession(currentCat));
+  $("#againBtn").addEventListener("click", ()=>startSession(session?session.cat:null));
+  $("#quitQuiz").addEventListener("click", quitToHome);
+  $$("[data-go]").forEach(b=>b.addEventListener("click", ()=>showScreen(b.dataset.go)));
+  $$("#levelChips .lv").forEach(b=>b.addEventListener("click", ()=>{ state.level=b.dataset.lv; save(); renderHome(); }));
+  $("#themeBtn").addEventListener("click", ()=>{ state.theme=state.theme==="dark"?"light":"dark"; applyTheme(); save(); });
+  $("#resetBtn").addEventListener("click", ()=>{
+    if(confirm("Reset all progress, XP, streak and review history? This can't be undone.")){
+      state=freshState(); applyTheme(); save(); renderStats(); renderHome();
+    }
+  });
+  $("#dictGo").addEventListener("click", ()=>lookupWord($("#dictInput").value));
+  $("#dictInput").addEventListener("keydown",(e)=>{ if(e.key==="Enter"){ e.preventDefault(); lookupWord($("#dictInput").value); }});
+  $$("#dirSwitch .dir-opt").forEach(b=>b.addEventListener("click", ()=>{ _dictDir=b.dataset.dir; updateDictHint(); }));
+  $("#sheetBg").addEventListener("click",(e)=>{ if(e.target.id==="sheetBg") closeSheet(); });
+  document.addEventListener("keydown",(e)=>{ if(e.key==="Escape" && $("#sheetBg").classList.contains("open")) closeSheet(); });
+  $("#esToggle").addEventListener("click", ()=>{ state.showES = !state.showES; applyES(); save(); });
+  const nb = $("#notebook");
+  if(nb) nb.addEventListener("input", nbInput);
+  $("#expWord").addEventListener("click", exportWord);
+  $("#expTxt").addEventListener("click", exportTXT);
+  $("#copyAll").addEventListener("click", copyAll);
+  $("#impNote").addEventListener("click", ()=>$("#impFile").click());
+  $("#impFile").addEventListener("change",(e)=>{ const f=e.target.files&&e.target.files[0]; importNotebook(f); e.target.value=""; });
+  $("#clearNote").addEventListener("click", clearNotebook);
+  $("#resumeBar").addEventListener("click", ()=>{ if(session) showScreen("quiz"); });
+}
+
+(async function init(){
+  await loadState();
+  migrateNotes();
+  await loadNotebookResilient();
+  applyTheme();
+  applyES();
+  wire();
+  updateDictHint();
+  renderHome();
+})();
+</script>
+</body>
+</html>
